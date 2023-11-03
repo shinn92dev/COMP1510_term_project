@@ -7,13 +7,16 @@ This is written in markdown. Read about markdown here: markdowncheatsheet
 ## Your name:
 
 Anthony (Seunghwan) Shin
+Momona Wada
 
 ## Your student number:
 
-A01299201
+Anthony: A01299201 
+Momo: A01348325
 
 ## Your GitHub ID:
 
-shinn92dev
+Anthony: shinn92dev 
+Momo: Momona-Wada
 
 ## Any important comments you'd like to make about your work:
