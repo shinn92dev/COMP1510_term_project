@@ -29,16 +29,39 @@ def create_map():
     return maps
 
 
-def create_character(name, occupation):
-    character = {"name": name, "occupation": occupation.title, "location": (0, 0), "level": 0,
-                 "current_hp": 10, "max_hp": 10, "xp": 100, "attack": occupation.skills}
+def create_character(character_information):
+    character = {"name": character_information.name, "occupation": character_information.occupation_title,
+                 "location": (0, 0), "level": 0, "current_hp": 10, "max_hp": 10, "xp": 100,
+                 "attack": character_information.skills}
     return character
+
+
+def get_user_input_for_character():
+    # Get username from user
+    print("Welcome User! Enter your name to start")
+    character_information = {}
+    while True:
+        try:
+            name = input("Your name: ")
+            if len(name.strip()) <= 2:
+                pass
+                # TODO: raise appropriate error
+                # raise
+        except:
+            print("Character name should be longer than 2 letters.😥")
+            print("Please re-enter your name🙏")
+        else:
+            character_information["name"] = name
+            break
+
+    # Get user occupation
+    occupation_list = ["Otaku", "Salaryman", "Ninja", "Samurai"]
 
 
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
-    print(game_map)
+    get_user_input_for_character()
 
 
 if __name__ == "__main__":
