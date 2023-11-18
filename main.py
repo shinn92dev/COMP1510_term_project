@@ -29,6 +29,12 @@ def create_map():
     return maps
 
 
+def create_character(name, occupation):
+    character = {"name": name, "occupation": occupation.title, "location": (0, 0), "level": 0,
+                 "current_hp": 10, "max_hp": 10, "xp": 100, "attack": occupation.skills}
+    return character
+
+
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
