@@ -4,7 +4,7 @@ import json
 
 def create_map():
     # Load map name json file and store in dictionary
-    location_file = "game_data/map_name.json"
+    location_file = "game_data/location_names.json"
     with open(location_file) as location_names_json:
         location_names = json.load(location_names_json)
 
