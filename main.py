@@ -58,10 +58,22 @@ def get_user_input_for_character():
     occupation_list = ["Otaku", "Salaryman", "Ninja", "Samurai"]
 
 
+def check_for_foe():
+    #  25% of chance to encounter a foe
+    there_is_a_foe = random.randint(1, 4)
+    if there_is_a_foe == 1:
+        return True
+    else:
+        return False
+
+
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
     get_user_input_for_character()
+    there_is_a_challenger = check_for_foe()
+
+
 
 
 if __name__ == "__main__":
