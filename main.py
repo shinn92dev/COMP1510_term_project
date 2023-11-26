@@ -66,12 +66,24 @@ def check_for_foe():
     else:
         return False
 
+def fight_with_foe():
+    # Load foe name json file and store in dictionary
+    foe_file = "game_data/foe.json"
+    with open(foe_file) as foe_json:
+        foes = json.load(foe_json)
+
+    chosen_foe = random.choice(foes)
+    pass
+
 
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
     get_user_input_for_character()
     there_is_a_challenger = check_for_foe()
+    if there_is_a_challenger:
+        fight_with_foe()
+
 
 
 
