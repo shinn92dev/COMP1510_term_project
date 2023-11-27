@@ -67,13 +67,53 @@ def check_for_foe():
         return False
 
 def fight_with_foe():
+    # character info will be taken from an argument eventually
+    # so this is a temporary variable
+    character = {"name": "momo", "occupation": "Otaku",
+                 "location": (2, 4), "level": 0, "current_hp": 10, "max_hp": 10, "xp": 100,
+                 "attack": 3}
+
     # Load foe name json file and store in dictionary
     foe_file = "game_data/foe.json"
     with open(foe_file) as foe_json:
         foes = json.load(foe_json)
-
     chosen_foe = random.choice(foes)
-    pass
+
+    print(f"A wild {chosen_foe['name']} appears!")
+
+    while character['current_hp'] > 0 and chosen_foe['HP'] > 0:
+        print()
+        try:
+            action = input("Choose your action:\n1. Attack\n2. Defend\n")
+            if action == "1":
+                chosen_foe['HP'] -= character['attack']
+                print(f"You attacked the {chosen_foe['name']}")
+                print(f"Your current status: {character}\nThe {chosen_foe['name']}'s current status{chosen_foe}")
+                is_defending = False
+            elif action == "2":
+                print(f"You defend yourself so you didn't get any damage from {chosen_foe['name']}!")
+                print(f"Your current status: {character}\nThe {chosen_foe['name']}'s current status{chosen_foe}")
+                is_defending = True
+            else:
+                print("Invalid input. Please enter 1 or 2!")
+                continue
+
+            print()
+            if chosen_foe['HP'] >= 0 and not is_defending:
+                character['current_hp'] -= chosen_foe['attack']
+                print(f"The {chosen_foe['name']} attacked you!")
+                print(f"Your current status: {character}\nThe {chosen_foe['name']}'s current status{chosen_foe}")
+        except ValueError:
+            print("Invalid input. Please enter 1 or 2!")
+            continue
+
+    print()
+    if character['current_hp'] <= 0:
+        print("You have been defeated...")
+        return False
+    else:
+        print(f"You defeated the {chosen_foe['name']}!")
+        return True
 
 
 def main():
