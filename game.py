@@ -125,6 +125,10 @@ def check_for_quiz():
         return False
 
 
+def solve_quiz():
+    pass
+
+
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
@@ -133,6 +137,8 @@ def main():
     if there_is_a_challenger:
         fight_with_foe()
         check_for_quiz()
+        if check_for_quiz():
+            solve_quiz()
 
 
 if __name__ == "__main__":
