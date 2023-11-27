@@ -116,6 +116,15 @@ def fight_with_foe():
         return True
 
 
+def check_for_quiz():
+    #  25% of chance to get a quiz
+    there_is_a_quiz = random.randint(1, 4)
+    if there_is_a_quiz == 2:
+        return True
+    else:
+        return False
+
+
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
@@ -123,9 +132,7 @@ def main():
     there_is_a_challenger = check_for_foe()
     if there_is_a_challenger:
         fight_with_foe()
-
-
-
+        check_for_quiz()
 
 
 if __name__ == "__main__":
