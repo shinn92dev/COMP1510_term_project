@@ -2,26 +2,31 @@
   {
     "name": "name1",
     "level": 1,
-    "HP": 2
+    "HP": 2,
+    "attack": 1
   },
   {
     "name": "name2",
     "level": 2,
-    "HP": 4
+    "HP": 4,
+    "attack": 2
   },
   {
     "name": "name3",
     "level": 3,
-    "HP": 6
+    "HP": 6,
+    "attack": 3
   },
   {
     "name": "name4",
     "level": 4,
-    "HP": 8
+    "HP": 8,
+    "attack": 4
   },
   {
     "name": "name5",
     "level": 5,
-    "HP": 10
+    "HP": 10,
+    "attack": 5
   }
 ]
