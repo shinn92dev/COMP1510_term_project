@@ -150,9 +150,10 @@ def solve_quiz():
         raise ValueError("Invalid choice!\nPlease select one of the following options:" )
     elif user_answer == answer:
         print("You are right! You get 1 HP 🥳")
-        # invoke increase_HP function
+        # invoke increase_HP function or return True
     else:
         print(f"Oops! The answer is {answer}")
+        # return False
 
 
 def main():
