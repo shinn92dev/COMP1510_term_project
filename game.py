@@ -73,7 +73,7 @@ def fight_with_foe():
                  "location": (2, 4), "level": 0, "current_hp": 10, "max_hp": 10, "xp": 100,
                  "attack": 3}
 
-    # Load foe name json file and store in dictionary
+    # Load foe json file and store in dictionary
     foe_file = "game_data/foe.json"
     with open(foe_file) as foe_json:
         foes = json.load(foe_json)
@@ -126,7 +126,33 @@ def check_for_quiz():
 
 
 def solve_quiz():
-    pass
+    # Load quiz json file and store in dictionary
+    quiz_file = "game_data/quiz.json"
+    with open(quiz_file) as quiz_json:
+        quizzes = json.load(quiz_json)
+    chosen_quiz = random.choice(quizzes)
+
+    #get the key for the chosen quiz
+    quiz_key = list(chosen_quiz.keys())[0]
+
+    question = chosen_quiz[quiz_key]["question"]
+    options = chosen_quiz[quiz_key]["option"]
+    answer = chosen_quiz[quiz_key]["answer"]
+
+    # print question and options
+    print("You've encountered a quiz challenge! 🧠\n")
+    print(f"Question 🧐❔\n{question}")
+    for option in options:
+        print(option.strip())
+
+    user_answer = input("Enter your answer >>>")
+    if user_answer not in ['1', '2', '3']:
+        raise ValueError("Invalid choice!\nPlease select one of the following options:" )
+    elif user_answer == answer:
+        print("You are right! You get 1 HP 🥳")
+        # invoke increase_HP function
+    else:
+        print(f"Oops! The answer is {answer}")
 
 
 def main():
@@ -138,7 +164,10 @@ def main():
         fight_with_foe()
         check_for_quiz()
         if check_for_quiz():
-            solve_quiz()
+            try:
+                solve_quiz()
+            except ValueError as e:
+                print(e)
 
 
 if __name__ == "__main__":
