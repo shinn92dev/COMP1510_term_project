@@ -41,21 +41,40 @@ def get_user_input_for_character():
     print("Welcome User! Enter your name to start")
     character_information = {}
     while True:
-        try:
-            name = input("Your name: ")
-            if len(name.strip()) <= 2:
-                pass
-                # TODO: raise appropriate error
-                # raise
-        except:
-            print("Character name should be longer than 2 letters.😥")
-            print("Please re-enter your name🙏")
-        else:
-            character_information["name"] = name
+        user_name = input(">> ").strip()
+        if len(user_name) >= 3:
+            character_information["name"] = user_name
+            print(f"Nice to meet you {user_name}!")
             break
+        else:
+            print("Your name must be longer than or equal to 3 letters.")
+            print("Please re-enter your name.")
 
-    # Get user occupation
-    occupation_list = ["Otaku", "Salaryman", "Ninja", "Samurai"]
+    occupations = {"1": "occupation1", "2": "occupation2", "3": "occupation3", "4": "occupation4"}
+    print("Now, let's select your occupation!")
+    print("Please select one occupation from below.")
+    print("========================================")
+    for key, value in occupations.items():
+        print(f"{key}: {value}")
+    print("========================================")
+    print("HINT: You can enter just number or full name of occupations.")
+    while True:
+        user_occupation = input(">> ")
+        if user_occupation in occupations or user_occupation in occupations.values():
+            try:
+                user_occupation = int(user_occupation)
+            except ValueError:
+                character_information["occupation_title"] = user_occupation
+            else:
+                character_information["occupation_title"] = occupations[str(user_occupation)]
+            finally:
+                break
+        else:
+            print(f"{user_occupation} is not valid occupation.")
+            print("Please re-enter your occupation by number or full name of occupations.")
+            # TODO: print occupations list one more time here
+    print(character_information)
+    return character_information
 
 
 def check_for_foe():
@@ -172,4 +191,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    get_user_input_for_character()
+    # main()
