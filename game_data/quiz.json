@@ -3,14 +3,14 @@
         "greeting": {
             "question": "How do you say 'Good morning' in Japanese?",
             "option": ["1. おはようございます(Ohayo Gozaimasu)\n", "2. いただきます(Itadakimasu)\n", "3. おやすみ(Oyasumi\n"],
-            "answer": 1
+            "answer": "1"
         }
     },
     {
         "curry": {
             "question": "Which curry chain is the most popular in Japan?",
             "option": ["1. モスバーガー(Mos Burger)\n", "2. Coco壱番屋(Coco Curry)\n", "3.松屋(Matsuya)\n"],
-            "answer": 2
+            "answer": "2"
         }
     },
     {
@@ -19,56 +19,56 @@
             "option": ["1. It's a famous hot spring destination.\n",
                        "2. It's a unique shopping district in Tokyo.\n",
                        "3. It's a renowned series of bridges connecting islands.\n"],
-            "answer": 3
+            "answer": "3"
         }
     },
     {
         "new_year_eve": {
             "question": "What food do Japanese people traditionally eat at midnight on New Year's Eve?",
-            "option": ["1. うどん(Udon)\n", "2. そば(Soba)\n", "3.寿司(Sushi)\n"],
-            "answer": 2
+            "option": ["1. うどん(Udon)\n", "2. そば(Soba)\n", "3. 寿司(Sushi)\n"],
+            "answer": "2"
         }
     },
     {
         "christmas": {
             "question": "Which fast-food chain has become a popular meal choice in Japan during Christmas?",
             "option": ["1. KFC\n", "2. McDonald's\n", "3. Subway\n"],
-            "answer": 1
+            "answer": "1"
         }
     },
     {
         "mount_fuji": {
             "question": "How tall is Mount Fuji, which is the tallest mountain in Japan?",
             "option": ["1. 3,576 m\n", "2. 3,676 m\n", "3. 3,776 m\n"],
-            "answer": 3
+            "answer": "3"
         }
     },
     {
         "new_year": {
             "question": "What's the Japanese term for money given to children in New Year's envelopes?",
             "option": ["1. かるた(Karuta)\n", "2. 和服(Wafuku)\n", "3. お年玉(Otoshidama)"],
-            "answer": 3
+            "answer": "3"
         }
     },
     {
         "alcohol": {
             "question": "What is the legal drinking age in Japan?",
             "option": ["1. 19\n", "2. 20\n", "3. 21\n"],
-            "answer": 2
+            "answer": "2"
         }
     },
     {
         "dog": {
             "question": "What is the famous Japanese dog breed known for Hachi (and Momo's dog)?",
             "option": ["1. 柴犬(Shiba Inu)\n", "2. 秋田(Akita)\n", "3. チャウチャウ(Chow Chow)\n"],
-            "answer": 1
+            "answer": "1"
         }
     },
     {
         "tourism": {
-            "question": "what animal is commonly associated with the natural hot springs at 地獄谷(Jigokudani) where they are known to soak in the warm water during the winter?",
+            "question": "What animal is commonly associated with the natural hot springs at 地獄谷(Jigokudani) where they are known to soak in the warm water during the winter?",
             "option": ["1. 犬(Dog)\n", "2. 猫(Cat)\n", "3. 猿(Monkey)\n"],
-            "answer": 3
+            "answer": "3"
         }
     }
 ]
