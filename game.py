@@ -167,15 +167,29 @@ def solve_quiz():
     for option in options:
         print(option.strip())
 
-    user_answer = input("Enter your answer >>>")
+    user_answer = input("Enter your answer >>>").strip()
     if user_answer not in ['1', '2', '3']:
         raise ValueError("Invalid choice!\nPlease select one of the following options:" )
     elif user_answer == answer:
         print("You are right! You get 1 HP 🥳")
-        # invoke increase_HP function or return True
+        return True
     else:
         print(f"Oops! The answer is {answer}")
-        # return False
+        return False
+
+def increase_hp():
+    #character info will be taken from an argument eventually
+    # so this is a temporary variable
+    character = {"name": "momo", "occupation": "Otaku",
+                 "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
+                 "attack": 3}
+    character["current_hp"] += 1
+
+    print("========================================")
+    print("Current Status:")
+    for key, value in character.items():
+        print(f"{key}: {value}")
+    print("========================================")
 
 
 def main():
@@ -188,7 +202,9 @@ def main():
         check_for_quiz()
         if check_for_quiz():
             try:
-                solve_quiz()
+                quiz_result = solve_quiz()
+                if quiz_result:
+                    increase_hp() # character will be inside ()
             except ValueError as e:
                 print(e)
 
