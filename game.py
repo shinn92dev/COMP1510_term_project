@@ -5,7 +5,7 @@ import json
 def create_map():
     # Load map name json file and store in dictionary
     location_file = "game_data/location_names.json"
-    with open(location_file) as location_names_json:
+    with open(location_file, encoding="utf-8") as location_names_json:
         location_names = json.load(location_names_json)
 
     # Shuffle map list expect first and last items
@@ -15,11 +15,11 @@ def create_map():
         location_names[level] = [maps[0]] + middle_map + [maps[-1]]
 
     # Initialize maps
-    maps = {"level_1_map": {(x, y): "" for x in range(5) for y in range(4)},
-            "level_2_map": {(x, y): "" for x in range(5) for y in range(4)},
-            "level_3_map": {(x, y): "" for x in range(5) for y in range(4)},
-            "level_4_map": {(x, y): "" for x in range(5) for y in range(4)},
-            "level_5_map": {(x, y): "" for x in range(5) for y in range(4)}}
+    maps = {1: {(x, y): "" for x in range(5) for y in range(4)},
+            2: {(x, y): "" for x in range(5) for y in range(4)},
+            3: {(x, y): "" for x in range(5) for y in range(4)},
+            4: {(x, y): "" for x in range(5) for y in range(4)},
+            5: {(x, y): "" for x in range(5) for y in range(4)}}
 
     # Assign location name to maps
     for level, locations in zip(maps.keys(), location_names.values()):
@@ -30,9 +30,9 @@ def create_map():
 
 
 def create_character(character_information):
-    character = {"name": character_information.name, "occupation": character_information.occupation_title,
-                 "location": (0, 0), "level": 0, "current_hp": 10, "max_hp": 10, "xp": 100,
-                 "attack": character_information.skills}
+    character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
+                 "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 100}
+    # TODO: Add "attack": character_information.skills into character dictionary
     return character
 
 
@@ -73,8 +73,11 @@ def get_user_input_for_character():
             print(f"{user_occupation} is not valid occupation.")
             print("Please re-enter your occupation by number or full name of occupations.")
             # TODO: print occupations list one more time here
-    print(character_information)
     return character_information
+
+
+def describe_current_location(game_board, character):
+    print(f"{character['name']} is now currently in {game_board[character['level']][character['location']]}")
 
 
 def check_for_foe():
@@ -191,5 +194,8 @@ def main():
 
 
 if __name__ == "__main__":
-    get_user_input_for_character()
+    board = create_map()
+    cr = get_user_input_for_character()
+    crr = create_character(cr)
+    describe_current_location(board, crr)
     # main()
