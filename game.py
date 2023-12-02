@@ -192,6 +192,39 @@ def increase_hp():
     print("========================================")
 
 
+def increase_xp():
+    # character info will be taken from an argument eventually
+    # so this is a temporary variable
+    character = {"name": "momo", "occupation": "Otaku",
+                 "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
+                 "attack": 3}
+    if character["xp"] == 100:
+        print("Congratulations! You've reached maximum XP so Your level went up!")
+        return True
+    else:
+        character["xp"] += 1
+        print("========================================")
+        print("Current Status:")
+        for key, value in character.items():
+            print(f"{key}: {value}")
+        print("========================================")
+        # return False
+
+
+def increase_level():
+    # character info will be taken from an argument eventually
+    # so this is a temporary variable
+    character = {"name": "momo", "occupation": "Otaku",
+                 "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
+                 "attack": 3}
+    character["level"] += 1
+    print("========================================")
+    print("Current Status:")
+    for key, value in character.items():
+        print(f"{key}: {value}")
+    print("========================================")
+
+
 def main():
     print("I'm ready for the term project! 🙌")
     game_map = create_map()
@@ -207,6 +240,10 @@ def main():
                     increase_hp() # character will be inside ()
             except ValueError as e:
                 print(e)
+
+    # new_xp = increase_xp()
+    # if new_xp:
+    #     increase_level()
 
 
 if __name__ == "__main__":
