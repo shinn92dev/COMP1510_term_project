@@ -98,6 +98,25 @@ def get_general_user_input():
             print(valid_feature_inputs)
 
 
+def validate_movement(user_input, character, board):
+    current_location = list(character["location"])
+    location_after_movement = current_location
+    print(location_after_movement)
+    if user_input == "1" or user_input == "north":
+        location_after_movement[1] -= 1
+    elif user_input == "3" or user_input == "south":
+        location_after_movement[1] += 1
+    elif user_input == "4" or user_input == "west":
+        location_after_movement[0] -= 1
+    elif user_input == "2" or user_input == "east":
+        location_after_movement[0] += 1
+    print(tuple(location_after_movement))
+    if tuple(location_after_movement) in board[character["level"]]:
+        return True
+    else:
+        return False
+
+
 def check_for_foe():
     #  25% of chance to encounter a foe
     there_is_a_foe = random.randint(1, 4)
@@ -265,9 +284,11 @@ def main():
 
 
 if __name__ == "__main__":
-    # board = create_map()
-    # cr = get_user_input_for_character()
-    # crr = create_character(cr)
-    # describe_current_location(board, crr)
-    print(get_general_user_input())
+    board = create_map()
+    # character_information = get_user_input_for_character()
+    character_information = {"occupation_title": "Occupation 1", "name": "Anthony"}
+    character = create_character(character_information)
+    describe_current_location(board, character)
+    user_input = get_general_user_input()
+    print(validate_movement(user_input, character, board))
     # main()
