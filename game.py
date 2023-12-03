@@ -80,6 +80,24 @@ def describe_current_location(game_board, character):
     print(f"{character['name']} is now currently in {game_board[character['level']][character['location']]}")
 
 
+def get_general_user_input():
+    valid_direction_inputs = ["1", "2", "3", "4", "north", "south", "east", "west"]
+    valid_feature_inputs = ["help", "map", "status"]
+    valid_inputs = valid_direction_inputs + valid_feature_inputs
+    print("Where do you want to go?")
+    print("Enter the number or full direction name.")
+    print("[1: North, 2: East, 3: South, 4: West]")
+    while True:
+        user_input = input(">> ").lower()
+        if user_input in valid_inputs:
+            return user_input
+        else:
+            print(f"Your input `{user_input} is not valid.`")
+            print("Please select from the below.")
+            print(valid_direction_inputs)
+            print(valid_feature_inputs)
+
+
 def check_for_foe():
     #  25% of chance to encounter a foe
     there_is_a_foe = random.randint(1, 4)
@@ -194,8 +212,9 @@ def main():
 
 
 if __name__ == "__main__":
-    board = create_map()
-    cr = get_user_input_for_character()
-    crr = create_character(cr)
-    describe_current_location(board, crr)
+    # board = create_map()
+    # cr = get_user_input_for_character()
+    # crr = create_character(cr)
+    # describe_current_location(board, crr)
+    print(get_general_user_input())
     # main()
