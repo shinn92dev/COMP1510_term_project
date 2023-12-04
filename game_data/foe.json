@@ -1,32 +1,26 @@
-[
-  {
-    "name": "name1",
-    "level": 1,
-    "HP": 2,
-    "attack": 1
-  },
-  {
-    "name": "name2",
-    "level": 2,
-    "HP": 4,
-    "attack": 2
-  },
-  {
-    "name": "name3",
-    "level": 3,
-    "HP": 6,
-    "attack": 3
-  },
-  {
-    "name": "name4",
-    "level": 4,
-    "HP": 8,
-    "attack": 4
-  },
-  {
-    "name": "name5",
-    "level": 5,
-    "HP": 10,
-    "attack": 5
-  }
-]
+{"1": [{"name": "level1_foe1", "HP": 2, "attack": 1, "xp": 5},
+       {"name": "level1_foe2", "HP": 2, "attack": 1, "xp": 5},
+       {"name": "level1_foe3", "HP": 2, "attack": 1, "xp": 5},
+       {"name": "level1_foe4", "HP": 2, "attack": 1, "xp": 5},
+       {"name": "level1_foe5", "HP": 2, "attack": 1, "xp": 5}],
+  "2": [{"name": "level2_foe1", "HP": 4, "attack": 2, "xp": 10},
+        {"name": "level2_foe2", "HP": 4, "attack": 2, "xp": 10},
+        {"name": "level2_foe3", "HP": 4, "attack": 2, "xp": 10},
+        {"name": "level2_foe4", "HP": 4, "attack": 2, "xp": 10},
+        {"name": "level2_foe5", "HP": 4, "attack": 2, "xp": 10}],
+  "3": [{"name": "level3_foe1", "HP": 6, "attack": 3, "xp": 15},
+        {"name": "level3_foe2", "HP": 6, "attack": 3, "xp": 15},
+        {"name": "level3_foe3", "HP": 6, "attack": 3, "xp": 15},
+        {"name": "level3_foe4", "HP": 6, "attack": 3, "xp": 15},
+        {"name": "level3_foe5", "HP": 6, "attack": 3, "xp": 15}],
+  "4": [{"name": "level4_foe1", "HP": 8, "attack": 4, "xp": 20},
+        {"name": "level4_foe2", "HP": 8, "attack": 4, "xp": 20},
+        {"name": "level4_foe3", "HP": 8, "attack": 4, "xp": 20},
+        {"name": "level4_foe4", "HP": 8, "attack": 4, "xp": 20},
+        {"name": "level4_foe5", "HP": 8, "attack": 4, "xp": 20}],
+  "5": [{"name": "level5_foe1", "HP": 10, "attack": 5, "xp": 25},
+        {"name": "level5_foe2", "HP": 10, "attack": 5, "xp": 25},
+        {"name": "level5_foe3", "HP": 10, "attack": 5, "xp": 25},
+        {"name": "level5_foe4", "HP": 10, "attack": 5, "xp": 25},
+        {"name": "level5_foe5", "HP": 10, "attack": 5, "xp": 25}]
+}
