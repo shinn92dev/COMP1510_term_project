@@ -36,7 +36,7 @@ def create_map():
 
 def create_character(character_information):
     character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
-                 "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 0, "attack": 2}
+                 "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 10, "attack": 2}
     # TODO: Add "attack": character_information.skills into character dictionary
     return character
 
@@ -46,6 +46,7 @@ def create_foe():
     with open(foe_file) as foe_json:
         foes = json.load(foe_json)
     return foes
+
 
 def select_foe(foes, level):
     return random.choice(foes[level])
@@ -171,40 +172,6 @@ def fight_with_foe(character, foe):
         if foe["HP"] <= 0:
             return True
 
-    # while character['current_hp'] > 0 and foe['HP'] > 0:
-    #     print()
-    #     try:
-    #         action = input("Choose your action:\n1. Attack\n2. Defend\n")
-    #         if action == "1":
-    #             foe['HP'] -= character['attack']
-    #             print(f"You attacked the {foe['name']}")
-    #             print(f"Your current status: {character}\nThe {foe['name']}'s current status{foe}")
-    #             is_defending = False
-    #         elif action == "2":
-    #             print(f"You defend yourself so you didn't get any damage from {foe['name']}!")
-    #             print(f"Your current status: {character}\nThe {foe['name']}'s current status{foe}")
-    #             is_defending = True
-    #         else:
-    #             print("Invalid input. Please enter 1 or 2!")
-    #             continue
-    #
-    #         print()
-    #         if foe['HP'] >= 0 and not is_defending:
-    #             character['current_hp'] -= foe['attack']
-    #             print(f"The {foe['name']} attacked you!")
-    #             print(f"Your current status: {character}\nThe {foe['name']}'s current status{foe}")
-    #     except ValueError:
-    #         print("Invalid input. Please enter 1 or 2!")
-    #         continue
-    #
-    # print()
-    # if character['current_hp'] <= 0:
-    #     print("You have been defeated...")
-    #     return False
-    # else:
-    #     print(f"You defeated the {foe['name']}!")
-    #     return True
-
 
 def check_for_quiz():
     #  25% of chance to get a quiz
@@ -222,7 +189,7 @@ def solve_quiz():
         quizzes = json.load(quiz_json)
     chosen_quiz = random.choice(quizzes)
 
-    #get the key for the chosen quiz
+    # get the key for the chosen quiz
     quiz_key = list(chosen_quiz.keys())[0]
 
     question = chosen_quiz[quiz_key]["question"]
@@ -237,7 +204,7 @@ def solve_quiz():
 
     user_answer = input("Enter your answer >>>").strip()
     if user_answer not in ['1', '2', '3']:
-        raise ValueError("Invalid choice!\nPlease select one of the following options:" )
+        raise ValueError("Invalid choice!\nPlease select one of the following options:")
     elif user_answer == answer:
         print("You are right! You get 1 HP 🥳")
         return True
@@ -247,7 +214,7 @@ def solve_quiz():
 
 
 def increase_hp():
-    #character info will be taken from an argument eventually
+    # character info will be taken from an argument eventually
     # so this is a temporary variable
     character = {"name": "momo", "occupation": "Otaku",
                  "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
@@ -264,11 +231,11 @@ def increase_hp():
 def increase_xp(character, foe):
     # character info will be taken from an argument eventually
     # so this is a temporary variable
-    if character["xp"] == 100:
+    if character["xp"] <= 0:
         print("Congratulations! You've reached maximum XP so Your level went up!")
         return True
     else:
-        character["xp"] += foe['xp']
+        character["xp"] -= foe['xp']
         print("========================================")
         print("Current Status:")
         for key, value in character.items():
@@ -277,12 +244,9 @@ def increase_xp(character, foe):
         return False
 
 
-def increase_level():
+def increase_level(character):
     # character info will be taken from an argument eventually
     # so this is a temporary variable
-    character = {"name": "momo", "occupation": "Otaku",
-                 "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
-                 "attack": 3}
     character["level"] += 1
     print("========================================")
     print("Current Status:")
@@ -306,7 +270,7 @@ def main():
     is_not_alive = False
     is_achieved_goal = False
 
-    while not(is_achieved_goal):
+    while not is_achieved_goal:
         describe_current_location(game_map, character)
         user_input = get_general_user_input()
         is_valid_input = validate_movement(user_input, character, game_map)
@@ -314,25 +278,36 @@ def main():
             move_character(user_input, character)
             describe_current_location(game_map, character)
             there_is_a_challenger = check_for_foe()
+            there_is_a_quiz = check_for_quiz()
+
+            # deal with foe
             if there_is_a_challenger:
                 foe = select_foe(foes, str(character["level"]))
-                if fight_with_foe(character, foe):
-                    increase_xp(character, foe)
-                    break
+                result_of_fight = fight_with_foe(character, foe)
+
+                # if character wins, increase xp
+                if result_of_fight:
+                    result_of_level = increase_xp(character, foe)
+                    # if xp is full, increase the level
+                    if result_of_level:
+                        increase_level(character)
+                # if character loses, initialize the character status
                 else:
-                    print("LOSE")
-                    break
-                # キャラクターがかったら
-                    #EXアップ
-                #　Else：
-                #　  Done
+                    print("You died.")
+                    character["location"] = (0, 0)
+                    character["xp"] = 100
+                    print("Your XP is initialized and you are returned to the initial place.")
+                    continue
+
+            # deal with quiz
+            if there_is_a_quiz:
+                pass
         else:
             print("------------------------------------------------------")
             print("❌Warning!!❌")
             print("You reached the boundary of the game board.")
             print("You cannot move to that direction!")
             print("------------------------------------------------------")
-
 
     # there_is_a_challenger = check_for_foe()
     # if there_is_a_challenger:
@@ -352,15 +327,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # board = create_map()
-    # # character_information = get_user_input_for_character()
-    # character_information = {"occupation_title": "Occupation 1", "name": "Anthony"}
-    # character = create_character(character_information)
-    # describe_current_location(board, character)
-    # user_input = get_general_user_input()
-    #
-    # if validate_movement(user_input, character, board):
-    #     move_character(user_input, character)
-    #
-    # print(character["location"])
     main()
