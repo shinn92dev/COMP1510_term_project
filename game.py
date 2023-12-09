@@ -72,11 +72,11 @@ def main():
 
                 # deal with quiz
                 if there_is_a_quiz:
-                    # TODO: Handle no more quiz error
                     print("character level {character['level']}")
                     quiz = select_quiz(quizzes, str(character["level"]))
                     if quiz:
-                        solve_quiz(quiz)
+                        if solve_quiz(quiz):
+                            increase_hp(character)
 
             is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
             is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
