@@ -14,7 +14,7 @@ def create_quizzes():
 
 def select_quiz(quizzes, level):
     quiz_len = len(quizzes[level]) - 1
-    if level <= 5 and quiz_len != -1:
+    if int(level) <= 5 and quiz_len != -1:
         return quizzes[level].pop(randint(0, quiz_len))
 
 
