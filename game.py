@@ -279,9 +279,10 @@ def solve_quiz(chosen_quiz):
 
 def increase_attack(character, current_map):
     current_location_name = current_map[character["location"]]
+    print(current_location_name)
     if current_location_name == "CoCo Curry (CoCo壱番屋)":
         character["attack"] += 1
-    print("|🎉 Congrats!| You got stronger")
+        print("|🎉 Congrats!| You got stronger")
 
 
 def increase_hp(character):
