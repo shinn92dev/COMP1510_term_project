@@ -65,6 +65,12 @@ def create_character(character_information):
 
 
 def create_foe():
+    """
+    Create foes' dictionary from JSON file containing foes information
+
+    :postcondition: get foes information from JSON file and create dictionary from the given information
+    :return: a dictionary containing foe information
+    """
     foe_file = "game_data/foe.json"
     with open(foe_file) as foe_json:
         foes = json.load(foe_json)
