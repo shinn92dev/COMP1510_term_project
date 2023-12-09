@@ -112,8 +112,8 @@ def get_user_input_for_character():
             print("Your name must be longer than or equal to 3 letters.")
             print("Please re-enter your name.")
 
-    location_file = "game_data/occupation.json"
-    with open(location_file, encoding="utf-8") as location_names_json:
+    occupation_file = "game_data/occupation.json"
+    with open(occupation_file, encoding="utf-8") as location_names_json:
         occupations = json.load(location_names_json)
 
     print("Now, let's select your occupation!")
