@@ -43,7 +43,7 @@ def create_map():
 
 def create_character(character_information):
     character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
-                 "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 10, "attack": 2}
+                 "location": (0, 0), "level": 1, "current_hp": 1000, "max_hp": 1000, "xp": 10, "attack": 2}
     # TODO: Add "attack": character_information.skills into character dictionary
     return character
 
@@ -175,7 +175,6 @@ def check_for_foe():
 
 
 def fight_with_foe(character, foe):
-
     print(f"A wild {foe['name']} appears!")
     print("")
 
@@ -289,6 +288,12 @@ def increase_level(character):
     # print("")
 
 
+def get_current_map_level(character, entire_board, current_map):
+    for map_level in range(1, 6):
+        if current_map[character["location"]] in entire_board[map_level].values():
+            return map_level
+
+
 def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map):
     current_map_level = None
     for map_level in range(1, 6):
@@ -334,6 +339,10 @@ def main():
 
     describe_current_location(current_map, character)
     while not am_i_win:
+        current_map_level = get_current_map_level(character, game_map, current_map)
+        print("#" * 100)
+        print(current_map_level)
+        print("#" * 100)
         user_input = get_general_user_input()
         is_valid_input = validate_movement(user_input, character, current_map)
         if is_valid_input:
@@ -343,33 +352,34 @@ def main():
             there_is_a_quiz = check_for_quiz(character)
             am_i_win = is_achieved_goal(character, current_map)
 
-            # deal with foe
-            if there_is_a_challenger:
-                foe = select_foe(foes, str(character["level"]))
-                result_of_fight = fight_with_foe(character, foe)
+            if current_map_level + 1 > character["level"]:
+                # deal with foe
+                if there_is_a_challenger:
+                    foe = select_foe(foes, str(character["level"]))
+                    result_of_fight = fight_with_foe(character, foe)
 
-                # if character wins, increase xp
-                if result_of_fight:
-                    result_of_level = increase_xp(character, foe)
-                    # if xp is full, increase the level
-                    if result_of_level:
-                        increase_level(character)
-                # if character loses, initialize the character status
-                else:
-                    print("You died.")
-                    character["location"] = (0, 0)
-                    character["xp"] = 100
-                    character["current_hp"] = character["max_hp"]
-                    print("Your XP is initialized and you are returned to the initial place.")
-                    continue
+                    # if character wins, increase xp
+                    if result_of_fight:
+                        result_of_level = increase_xp(character, foe)
+                        # if xp is full, increase the level
+                        if result_of_level:
+                            increase_level(character)
+                    # if character loses, initialize the character status
+                    else:
+                        print("You died.")
+                        character["location"] = (0, 0)
+                        character["xp"] = 100
+                        character["current_hp"] = character["max_hp"]
+                        print("Your XP is initialized and you are returned to the initial place.")
+                        continue
 
-            # deal with quiz
-            if there_is_a_quiz:
-                # TODO: Handle no more quiz error
-                print(character["level"])
-                quiz = select_quiz(quizzes, str(character["level"]))
-                if quiz:
-                    solve_quiz(quiz)
+                # deal with quiz
+                if there_is_a_quiz:
+                    # TODO: Handle no more quiz error
+                    print(character["level"])
+                    quiz = select_quiz(quizzes, str(character["level"]))
+                    if quiz:
+                        solve_quiz(quiz)
 
             is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
             is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
