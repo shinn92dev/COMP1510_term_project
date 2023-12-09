@@ -10,6 +10,13 @@ import json
 
 
 def print_initial_story(name):
+    """
+    Print out initial story of the game
+
+    :param name: a string
+    :precondition: a name should be a username that the user inputted
+    :postcondition: print out correct initial story with username
+    """
     print(f"Hello {name}!")
     print("Your journey to become Japanese Emperor Starts Here.")
 
