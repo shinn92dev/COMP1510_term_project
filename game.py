@@ -176,11 +176,14 @@ def fight_with_foe(character, foe):
             return True
 
 
-def check_for_quiz():
+def check_for_quiz(character):
     #  25% of chance to get a quiz
-    there_is_a_quiz = random.randint(1, 4)
-    if there_is_a_quiz == 2:
-        return True
+    if not(character["current_hp"] == character["max_hp"]):
+        there_is_a_quiz = random.randint(1, 4)
+        if there_is_a_quiz == 2:
+            return True
+        else:
+            return False
     else:
         return False
 
@@ -222,12 +225,8 @@ def solve_quiz(chosen_quiz):
         return False
 
 
-def increase_hp():
+def increase_hp(character):
     # character info will be taken from an argument eventually
-    # so this is a temporary variable
-    character = {"name": "momo", "occupation": "Otaku",
-                 "location": (2, 4), "level": 0, "current_hp": 5, "max_hp": 10, "xp": 100,
-                 "attack": 3}
     character["current_hp"] += 1
 
     print("========================================")
@@ -312,7 +311,6 @@ def main():
     print(current_map)
 
     describe_current_location(current_map, character)
-    character["level"] = 2
     while not am_i_win:
         user_input = get_general_user_input()
         is_valid_input = validate_movement(user_input, character, current_map)
@@ -320,7 +318,7 @@ def main():
             move_character(user_input, character)
             describe_current_location(current_map, character)
             there_is_a_challenger = check_for_foe()
-            there_is_a_quiz = check_for_quiz()
+            there_is_a_quiz = check_for_quiz(character)
             am_i_win = is_achieved_goal(character, current_map)
 
             # deal with foe
@@ -344,15 +342,20 @@ def main():
 
             # deal with quiz
             if there_is_a_quiz:
-                quiz = select_quiz(quizzes, "1")
+                # TODO: Handle no more quiz error
+                print(character["level"])
+                quiz = select_quiz(quizzes, str(character["level"]))
                 solve_quiz(quiz)
 
             is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
             is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
             if is_enough_level and is_in_goal:
                 current_map = game_map[character["level"]]
+                character["location"] = (0, 0)
                 print("Next level!!")
             elif is_in_goal:
+                print("------------------------------------------------------")
+                print("")
                 print("You reached destination, but not enough level")
                 print("Please walk around the map and reach next level to get next map!")
         else:
@@ -361,22 +364,6 @@ def main():
             print("You reached the boundary of the game board.")
             print("You cannot move to that direction!")
             print("------------------------------------------------------")
-
-    # there_is_a_challenger = check_for_foe()
-    # if there_is_a_challenger:
-    #     fight_with_foe()
-    #     check_for_quiz()
-    #     if check_for_quiz():
-    #         try:
-    #             quiz_result = solve_quiz()
-    #             if quiz_result:
-    #                 increase_hp() # character will be inside ()
-    #         except ValueError as e:
-    #             print(e)
-
-    # new_xp = increase_xp()
-    # if new_xp:
-    #     increase_level()
 
 
 if __name__ == "__main__":
