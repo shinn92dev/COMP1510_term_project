@@ -277,6 +277,13 @@ def solve_quiz(chosen_quiz):
             return False
 
 
+def increase_attack(character, current_map):
+    current_location_name = current_map[character["location"]]
+    if current_location_name == "CoCo Curry (CoCo壱番屋)":
+        character["attack"] += 1
+    print("|🎉 Congrats!| You got stronger")
+
+
 def increase_hp(character):
     # character info will be taken from an argument eventually
     character["current_hp"] += 100
@@ -384,6 +391,7 @@ def main():
             there_is_a_challenger = check_for_foe()
             there_is_a_quiz = check_for_quiz(character)
             am_i_win = is_achieved_goal(character, current_map)
+            increase_attack(character, current_map)
 
             if current_map_level + 1 > character["level"]:
                 # deal with foe
@@ -435,7 +443,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # character = create_character({"name": "Anthony", "occupation_title": "NINJA"})
-    # game_map = create_map()
-    # current_map = game_map[character["level"]]
-    # is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
