@@ -93,7 +93,7 @@ def get_user_input_for_character():
 
 
 def describe_current_location(game_board, character):
-    print(f"{character['name']} is now currently in {game_board[character['level']][character['location']]}")
+    print(f"{character['name']} is now currently in {game_board[character['location']]}")
 
 
 def get_general_user_input():
@@ -127,7 +127,7 @@ def validate_movement(user_input, character, board):
     elif user_input == "2" or user_input == "east":
         location_after_movement[0] += 1
     print(tuple(location_after_movement))
-    if tuple(location_after_movement) in board[character["level"]]:
+    if tuple(location_after_movement) in board:
         return True
     else:
         return False
@@ -161,14 +161,17 @@ def check_for_foe():
 def fight_with_foe(character, foe):
 
     print(f"A wild {foe['name']} appears!")
+    print("")
 
     while True:
         character["current_hp"] -= foe["attack"]
+        print("")
         print(f"Foe attacked you. Now your hp is {character['current_hp']}")
         if character["current_hp"] <= 0:
             return False
         foe["HP"] -= character["attack"]
         print(f"You attacked foe. Now foe's hp is {foe['HP']}")
+        print("")
         if foe["HP"] <= 0:
             return True
 
@@ -182,34 +185,40 @@ def check_for_quiz():
         return False
 
 
-def solve_quiz():
-    # Load quiz json file and store in dictionary
+def create_quizzes():
     quiz_file = "game_data/quiz.json"
-    with open(quiz_file) as quiz_json:
+    with open(quiz_file, encoding="utf-8") as quiz_json:
         quizzes = json.load(quiz_json)
-    chosen_quiz = random.choice(quizzes)
+    return quizzes
 
-    # get the key for the chosen quiz
-    quiz_key = list(chosen_quiz.keys())[0]
 
-    question = chosen_quiz[quiz_key]["question"]
-    options = chosen_quiz[quiz_key]["option"]
-    answer = chosen_quiz[quiz_key]["answer"]
+def select_quiz(quizzes, level):
+    quiz_len = len(quizzes[level]) - 1
+    return quizzes[level].pop(random.randint(0, quiz_len))
+
+
+def solve_quiz(chosen_quiz):
+    question = chosen_quiz["question"]
+    options = chosen_quiz["option"]
+    answer = chosen_quiz["answer"]
 
     # print question and options
     print("You've encountered a quiz challenge! 🧠\n")
     print(f"Question 🧐❔\n{question}")
     for option in options:
         print(option.strip())
+    print("")
 
     user_answer = input("Enter your answer >>>").strip()
     if user_answer not in ['1', '2', '3']:
         raise ValueError("Invalid choice!\nPlease select one of the following options:")
     elif user_answer == answer:
         print("You are right! You get 1 HP 🥳")
+        print("")
         return True
     else:
         print(f"Oops! The answer is {answer}")
+        print("")
         return False
 
 
@@ -226,6 +235,7 @@ def increase_hp():
     for key, value in character.items():
         print(f"{key}: {value}")
     print("========================================")
+    print("")
 
 
 def increase_xp(character, foe):
@@ -233,6 +243,7 @@ def increase_xp(character, foe):
     # so this is a temporary variable
     if character["xp"] <= 0:
         print("Congratulations! You've reached maximum XP so Your level went up!")
+        print("")
         return True
     else:
         character["xp"] -= foe['xp']
@@ -241,6 +252,7 @@ def increase_xp(character, foe):
         for key, value in character.items():
             print(f"{key}: {value}")
         print("========================================")
+        print("")
         return False
 
 
@@ -253,6 +265,33 @@ def increase_level(character):
     for key, value in character.items():
         print(f"{key}: {value}")
     print("========================================")
+    print("")
+
+
+def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map):
+    current_map_level = None
+    for map_level in range(1, 6):
+        if current_map[character["location"]] in entire_board[map_level].values():
+            current_map_level = map_level
+    if character["level"] > current_map_level:
+        return True
+    else:
+        return False
+
+
+def is_in_the_goal_destination_of_each_map(character, current_map):
+    if sorted(current_map.keys())[-1] == character["location"]:
+        return True
+    else:
+        return False
+
+
+def is_achieved_goal(character, current_map):
+    if character["level"] > 5 and is_in_the_goal_destination_of_each_map(character, current_map):
+        return True
+    else:
+        return False
+
 
 
 def main():
@@ -264,21 +303,25 @@ def main():
 
     # Create Foes
     foes = create_foe()
+    quizzes = create_quizzes()
 
     print_initial_story(character["name"])
 
-    is_not_alive = False
-    is_achieved_goal = False
+    am_i_win = False
+    current_map = game_map[character["level"]]
+    print(current_map)
 
-    while not is_achieved_goal:
-        describe_current_location(game_map, character)
+    describe_current_location(current_map, character)
+    character["level"] = 2
+    while not am_i_win:
         user_input = get_general_user_input()
-        is_valid_input = validate_movement(user_input, character, game_map)
+        is_valid_input = validate_movement(user_input, character, current_map)
         if is_valid_input:
             move_character(user_input, character)
-            describe_current_location(game_map, character)
+            describe_current_location(current_map, character)
             there_is_a_challenger = check_for_foe()
             there_is_a_quiz = check_for_quiz()
+            am_i_win = is_achieved_goal(character, current_map)
 
             # deal with foe
             if there_is_a_challenger:
@@ -301,7 +344,17 @@ def main():
 
             # deal with quiz
             if there_is_a_quiz:
-                pass
+                quiz = select_quiz(quizzes, "1")
+                solve_quiz(quiz)
+
+            is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
+            is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
+            if is_enough_level and is_in_goal:
+                current_map = game_map[character["level"]]
+                print("Next level!!")
+            elif is_in_goal:
+                print("You reached destination, but not enough level")
+                print("Please walk around the map and reach next level to get next map!")
         else:
             print("------------------------------------------------------")
             print("❌Warning!!❌")
@@ -328,3 +381,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # character = create_character({"name": "Anthony", "occupation_title": "NINJA"})
+    # game_map = create_map()
+    # current_map = game_map[character["level"]]
+    # is_enough_level_to_proceed_to_next_map(character, game_map, current_map)

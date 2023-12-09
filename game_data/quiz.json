@@ -1,6 +1,5 @@
 {
-    "greeting": [
-        {
+    "1": [ {
             "question": "How do you say 'Good morning' in Japanese?",
             "option": [
                 "1. おはようございます (Ohayo Gozaimasu)\n",
@@ -8,35 +7,15 @@
                 "3. おやすみ (Oyasumi\n"
             ],
             "answer": "1"
-        },
-        {
+        }, {
             "question": "How do you say 'Good Afternoon' in Japanese?",
             "option": [
-                "2. こんばんは (Konbanwa)\n",
+                "1. こんばんは (Konbanwa)\n",
                 "2. こんにちは (Konnichiwa)\n",
                 "3. ありがとう (Arigato\n"
             ],
-            "answer": "1"
-        },
-        {
-            "question": "What is the common way to express gratitude in Japanese?",
-            "option": [
-                "1. ありがとう (Arigato)\n",
-                "2. ごめんなさい (Gomen nasai)\n",
-                "3. こんにちは (Konnichiwa)\n"
-            ],
-            "answer": "1"
-        },
-        {
-            "question": "How do you say 'Excuse me' or 'I'm sorry' in Japanese?",
-            "option": [
-                "1. すみません (Sumimasen)\n",
-                "2. いただきます (Itadakimasu)\n",
-                "3. おはようございます (Ohayo Gozaimasu)\n"
-            ],
-            "answer": "1"
-        },
-        {
+            "answer": "2"
+        }, {
             "question": "What is the polite way to say 'yes' in Japanese?",
             "option": [
                 "1. はい (Hai)\n",
@@ -44,8 +23,27 @@
                 "3. ありがとう (Arigato)\n"
             ],
             "answer": "1"
-        },
-        {
+        }
+    ],
+    "2": [{
+            "question": "What is the common way to express gratitude in Japanese?",
+            "option": [
+                "1. ありがとう (Arigato)\n",
+                "2. ごめんなさい (Gomen nasai)\n",
+                "3. こんにちは (Konnichiwa)\n"
+            ],
+            "answer": "1"
+        }, {
+            "question": "How do you say 'Excuse me' or 'I'm sorry' in Japanese?",
+            "option": [
+                "1. すみません (Sumimasen)\n",
+                "2. いただきます (Itadakimasu)\n",
+                "3. おはようございます (Ohayo Gozaimasu)\n"
+            ],
+            "answer": "1"
+        }
+    ],
+    "3": [{
             "question": "How do you say 'I don't understand' in Japanese?",
             "option": [
                 "1. 分かります (Wakarimasu)\n",
@@ -53,8 +51,9 @@
                 "3. こんにちは (Konnichiwa)\n"
             ],
             "answer": "2"
-        }
-    ],
+        }],
+    "4": [],
+    "5": [],
     "food": [
         {
             "question": "Which curry chain is the most popular in Japan?",
