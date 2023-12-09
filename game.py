@@ -45,7 +45,7 @@ def main():
             move_character(user_input, character)
             describe_current_location(current_map, character)
             there_is_a_challenger = check_for_foe()
-            there_is_a_quiz = check_for_quiz(character)
+            there_is_a_quiz = check_for_quiz(character, character["luck"])
             am_i_win = is_achieved_goal(character, current_map)
             increase_attack(character, current_map)
 

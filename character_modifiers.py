@@ -11,7 +11,12 @@ def increase_attack(character, current_map):
 
 def increase_hp(character):
     # character info will be taken from an argument eventually
-    character["current_hp"] += 100
+    current_hp = character["current_hp"]
+    hp = 100
+    if current_hp + hp >= character["max_hp"]:
+        character["current_hp"] = character["max_hp"]
+    else:
+        character["current_hp"] += hp
 
     print("========================================")
     print(f"Current Status: HP {character['current_hp']} / {character['max_hp']}")

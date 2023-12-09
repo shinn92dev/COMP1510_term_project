@@ -36,7 +36,7 @@ def solve_quiz(chosen_quiz):
             print("Please select 1, 2, or 3.")
             continue
         elif user_answer == answer:
-            print("You are right! You get 1 HP 🥳")
+            print("You are right! Your HP is increasing 🥳")
             print("")
             return True
         else:
@@ -45,16 +45,19 @@ def solve_quiz(chosen_quiz):
             return False
 
 
-def check_for_quiz(character):
-    #  25% of chance to get a quiz
-    if not(character["current_hp"] == character["max_hp"]):
-        there_is_a_quiz = randint(1, 4)
-        if there_is_a_quiz == 2:
+def check_for_quiz(character, luck_stat):
+    base_chance = 15
+
+    # If luck_stat is 5, increase chance to 25
+    if luck_stat == 5:
+        base_chance = 25
+
+    #  Check for a quiz
+    if not (character["current_hp"] == character["max_hp"]):
+        there_is_a_quiz = randint(1, 100)  # Use a range from 1 to 100 for percentage
+        if there_is_a_quiz <= base_chance:
             return True
-        else:
-            return False
-    else:
-        return False
+    return False
 
 
 def main():
