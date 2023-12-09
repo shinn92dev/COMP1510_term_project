@@ -72,7 +72,7 @@ def create_foe():
     :return: a dictionary containing foe information
     """
     foe_file = "game_data/foe.json"
-    with open(foe_file) as foe_json:
+    with open(foe_file, encoding="utf-8") as foe_json:
         foes = json.load(foe_json)
     return foes
 
