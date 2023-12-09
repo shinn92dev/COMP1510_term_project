@@ -78,6 +78,15 @@ def create_foe():
 
 
 def select_foe(foes, level):
+    """
+    Select one random foe that has the same level with the character
+
+    :param foes: a dictionary
+    :param level: an integer representing current character level
+    :precondition: foes should be a dictionary containing foes' level as keys and list of foes information as values
+    :postcondition: randomly choose a foe that has the same level with the character
+    :return: a dictionary containing a foe's information
+    """
     return random.choice(foes[level])
 
 
