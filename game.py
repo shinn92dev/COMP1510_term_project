@@ -6,6 +6,7 @@ def print_map(current_map, character):
     max_x_coordinate = max(coord[0] for coord in current_map.keys())
     max_y_coordinate = max(coord[1] for coord in current_map.keys())
     current_x_coord, current_y_coord = character["location"]
+    print("-----------------------------------")
     for y_coord in range(max_y_coordinate + 1):
         for x_coord in range(max_x_coordinate + 1):
             if x_coord == current_x_coord and y_coord == current_y_coord:
@@ -13,7 +14,7 @@ def print_map(current_map, character):
             else:
                 print("| 🟪 |", end=" ")
         print()
-    print()
+        print("-----------------------------------")
 
 
 def print_initial_story(name):
@@ -154,7 +155,7 @@ def get_general_user_input():
     valid_inputs = valid_direction_inputs + valid_feature_inputs
     print("Where do you want to go?")
     print("Enter the number or full direction name.")
-    print("[1: North, 2: East, 3: South, 4: West]")
+    print("[1: North, 2: East, 3: South, 4: West, 5: Map, 6: Status]")
     while True:
         user_input = input(">> ").lower()
         if user_input in valid_inputs:
@@ -287,7 +288,7 @@ def solve_quiz(chosen_quiz):
 def increase_attack(character, current_map):
     current_location_name = current_map[character["location"]]
     print(current_location_name)
-    if current_location_name == "CoCo Curry (CoCo壱番屋)":
+    if current_location_name[-8:-1] == "CoCo壱番屋":
         character["attack"] += 1
         print("|🎉 Congrats!| You got stronger")
 
@@ -389,7 +390,7 @@ def main():
     while not am_i_win:
         current_map_level = get_current_map_level(character, game_map, current_map)
         print("#" * 100)
-        print(current_map_level)
+        print(f"current_map_level {current_map_level}")
         print("#" * 100)
         user_input = get_general_user_input()
         is_valid_input = validate_movement(user_input, character, current_map)
@@ -425,7 +426,7 @@ def main():
                 # deal with quiz
                 if there_is_a_quiz:
                     # TODO: Handle no more quiz error
-                    print(character["level"])
+                    print("character level {character['level']}")
                     quiz = select_quiz(quizzes, str(character["level"]))
                     if quiz:
                         solve_quiz(quiz)
@@ -450,7 +451,7 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    c_m = {(0, 0): 'Home', (0, 1): 'Kokusai Street(国際通り)', (0, 2): 'Hateruma Island(波照間島)', (0, 3): 'CoCo Curry (CoCo壱番屋)', (1, 0): 'Okinawa Churaumi Aquarium(沖縄美ら海水族館)', (1, 1): 'CoCo Curry (CoCo壱番屋)', (1, 2): 'Mihama American Village(美浜アメリカンビレッジ)', (1, 3): 'King Tacos', (2, 0): 'Naminouegu Shrine(波上宮)', (2, 1): 'Kouri Island(古宇利島)', (2, 2): 'Blue Seal Ice Cream', (2, 3): 'A&W', (3, 0): 'Shuri Castle(首里城)', (3, 1): 'Peace Memorial Park(平和祈念公園)', (3, 2): 'Okinawa World(沖縄ワールド)', (3, 3): 'CoCo Curry (CoCo壱番屋)', (4, 0): 'Nakijin Castle Ruins(今帰仁城跡)', (4, 1): 'Miyako Island(宮古島)', (4, 2): 'Gyokusenn Cave(玉泉洞)', (4, 3): 'Okinawa US Military Base'}
-    c = {"location": (1, 3)}
-    print_map(c_m, c)
+    main()
+    # c_m = {(0, 0): 'Home', (0, 1): 'Kokusai Street(国際通り)', (0, 2): 'Hateruma Island(波照間島)', (0, 3): 'CoCo Curry (CoCo壱番屋)', (1, 0): 'Okinawa Churaumi Aquarium(沖縄美ら海水族館)', (1, 1): 'CoCo Curry (CoCo壱番屋)', (1, 2): 'Mihama American Village(美浜アメリカンビレッジ)', (1, 3): 'King Tacos', (2, 0): 'Naminouegu Shrine(波上宮)', (2, 1): 'Kouri Island(古宇利島)', (2, 2): 'Blue Seal Ice Cream', (2, 3): 'A&W', (3, 0): 'Shuri Castle(首里城)', (3, 1): 'Peace Memorial Park(平和祈念公園)', (3, 2): 'Okinawa World(沖縄ワールド)', (3, 3): 'CoCo Curry (CoCo壱番屋)', (4, 0): 'Nakijin Castle Ruins(今帰仁城跡)', (4, 1): 'Miyako Island(宮古島)', (4, 2): 'Gyokusenn Cave(玉泉洞)', (4, 3): 'Okinawa US Military Base'}
+    # c = {"location": (1, 3)}
+    # print_map(c_m, c)
