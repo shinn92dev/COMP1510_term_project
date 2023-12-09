@@ -105,7 +105,9 @@ def get_user_input_for_character():
 
 
 def describe_current_location(game_board, character):
-    print(f"{character['name']} is now currently in {game_board[character['location']]}")
+    print()
+    print(f"|INFO| {character['name']} is now currently in {game_board[character['location']]}")
+    print()
 
 
 def get_general_user_input():
@@ -120,16 +122,19 @@ def get_general_user_input():
         if user_input in valid_inputs:
             return user_input
         else:
+            print()
+            print("------------------------------------------------------")
+            print("❌Warning!!❌")
             print(f"Your input `{user_input} is not valid.`")
             print("Please select from the below.")
             print(valid_direction_inputs)
             print(valid_feature_inputs)
+            print("------------------------------------------------------")
 
 
 def validate_movement(user_input, character, board):
     current_location = list(character["location"])
     location_after_movement = current_location
-    print(location_after_movement)
     if user_input == "1" or user_input == "north":
         location_after_movement[1] -= 1
     elif user_input == "3" or user_input == "south":
@@ -138,7 +143,6 @@ def validate_movement(user_input, character, board):
         location_after_movement[0] -= 1
     elif user_input == "2" or user_input == "east":
         location_after_movement[0] += 1
-    print(tuple(location_after_movement))
     if tuple(location_after_movement) in board:
         return True
     else:
@@ -178,13 +182,16 @@ def fight_with_foe(character, foe):
     while True:
         character["current_hp"] -= foe["attack"]
         print("")
-        print(f"Foe attacked you. Now your hp is {character['current_hp']}")
+        print(f"|FIGHT🔥| Foe attacked you. Now your hp is {character['current_hp']}")
+        print("")
+
         if character["current_hp"] <= 0:
             return False
         foe["HP"] -= character["attack"]
-        print(f"You attacked foe. Now foe's hp is {foe['HP']}")
+        print(f"|FIGHT🔥| You attacked foe. Now foe's hp is {foe['HP']}")
         print("")
         if foe["HP"] <= 0:
+            print("You WIN!!")
             return True
 
 
@@ -209,7 +216,8 @@ def create_quizzes():
 
 def select_quiz(quizzes, level):
     quiz_len = len(quizzes[level]) - 1
-    return quizzes[level].pop(random.randint(0, quiz_len))
+    if quiz_len != -1:
+        return quizzes[level].pop(random.randint(0, quiz_len))
 
 
 def solve_quiz(chosen_quiz):
@@ -239,12 +247,10 @@ def solve_quiz(chosen_quiz):
 
 def increase_hp(character):
     # character info will be taken from an argument eventually
-    character["current_hp"] += 1
+    character["current_hp"] += 100
 
     print("========================================")
-    print("Current Status:")
-    for key, value in character.items():
-        print(f"{key}: {value}")
+    print(f"Current Status: HP {character['current_hp']} / {character['max_hp']}")
     print("========================================")
     print("")
 
@@ -258,12 +264,12 @@ def increase_xp(character, foe):
         return True
     else:
         character["xp"] -= foe['xp']
-        print("========================================")
-        print("Current Status:")
-        for key, value in character.items():
-            print(f"{key}: {value}")
-        print("========================================")
-        print("")
+        # print("========================================")
+        # print("Current Status: ")
+        # for key, value in character.items():
+        #     print(f"{key}: {value}")
+        # print("========================================")
+        # print("")
         return False
 
 
@@ -271,12 +277,16 @@ def increase_level(character):
     # character info will be taken from an argument eventually
     # so this is a temporary variable
     character["level"] += 1
-    print("========================================")
-    print("Current Status:")
-    for key, value in character.items():
-        print(f"{key}: {value}")
-    print("========================================")
-    print("")
+    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    print(f"You reached level {character['level']}")
+    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+
+    # print("========================================")
+    # print("Current Status:")
+    # for key, value in character.items():
+    #     print(f"{key}: {value}")
+    # print("========================================")
+    # print("")
 
 
 def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map):
@@ -349,6 +359,7 @@ def main():
                     print("You died.")
                     character["location"] = (0, 0)
                     character["xp"] = 100
+                    character["current_hp"] = character["max_hp"]
                     print("Your XP is initialized and you are returned to the initial place.")
                     continue
 
@@ -357,7 +368,8 @@ def main():
                 # TODO: Handle no more quiz error
                 print(character["level"])
                 quiz = select_quiz(quizzes, str(character["level"]))
-                solve_quiz(quiz)
+                if quiz:
+                    solve_quiz(quiz)
 
             is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
             is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
