@@ -112,14 +112,18 @@ def get_user_input_for_character():
             print("Your name must be longer than or equal to 3 letters.")
             print("Please re-enter your name.")
 
-    occupations = {"1": "occupation1", "2": "occupation2", "3": "occupation3", "4": "occupation4"}
+    location_file = "game_data/occupation.json"
+    with open(location_file, encoding="utf-8") as location_names_json:
+        occupations = json.load(location_names_json)
+
     print("Now, let's select your occupation!")
     print("Please select one occupation from below.")
 
     def print_occupation():
         print("========================================")
         for key, value in occupations.items():
-            print(f"{key}: {value}")
+            print(f"{key}: {value[0]}")
+            print(value[1])
         print("========================================")
         print("HINT: You can enter just number or full name of occupations.")
 
@@ -254,7 +258,7 @@ def create_quizzes():
 
 def select_quiz(quizzes, level):
     quiz_len = len(quizzes[level]) - 1
-    if quiz_len != -1:
+    if level <= 5 and quiz_len != -1:
         return quizzes[level].pop(random.randint(0, quiz_len))
 
 
@@ -451,7 +455,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    # c_m = {(0, 0): 'Home', (0, 1): 'Kokusai Street(国際通り)', (0, 2): 'Hateruma Island(波照間島)', (0, 3): 'CoCo Curry (CoCo壱番屋)', (1, 0): 'Okinawa Churaumi Aquarium(沖縄美ら海水族館)', (1, 1): 'CoCo Curry (CoCo壱番屋)', (1, 2): 'Mihama American Village(美浜アメリカンビレッジ)', (1, 3): 'King Tacos', (2, 0): 'Naminouegu Shrine(波上宮)', (2, 1): 'Kouri Island(古宇利島)', (2, 2): 'Blue Seal Ice Cream', (2, 3): 'A&W', (3, 0): 'Shuri Castle(首里城)', (3, 1): 'Peace Memorial Park(平和祈念公園)', (3, 2): 'Okinawa World(沖縄ワールド)', (3, 3): 'CoCo Curry (CoCo壱番屋)', (4, 0): 'Nakijin Castle Ruins(今帰仁城跡)', (4, 1): 'Miyako Island(宮古島)', (4, 2): 'Gyokusenn Cave(玉泉洞)', (4, 3): 'Okinawa US Military Base'}
-    # c = {"location": (1, 3)}
-    # print_map(c_m, c)
+    # main()
+    get_user_input_for_character()
