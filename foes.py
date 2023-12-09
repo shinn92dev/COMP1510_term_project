@@ -60,6 +60,11 @@ def fight_with_foe(character, foe):
             return True
 
 def check_for_foe():
+    """
+    Check if there is a foe.
+
+    :return: True if a randomly selected number from 1 to 4 is 1, else False.
+    """
     #  25% of chance to encounter a foe
     there_is_a_foe = randint(1, 4)
     if there_is_a_foe == 1:
