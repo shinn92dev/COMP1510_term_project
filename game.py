@@ -2,6 +2,13 @@ import random
 import json
 
 
+# def print_character_status(character):
+#     {"name": character_information["name"], "occupation": character_information["occupation_title"],
+#      "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 10, "attack": 2}
+#     print_value = ""
+#     print_value += "Name"
+
+
 def print_initial_story(name):
     print(f"Hello {name}!")
     print("Your journey to become Japanese Emperor Starts Here.")
@@ -69,11 +76,16 @@ def get_user_input_for_character():
     occupations = {"1": "occupation1", "2": "occupation2", "3": "occupation3", "4": "occupation4"}
     print("Now, let's select your occupation!")
     print("Please select one occupation from below.")
-    print("========================================")
-    for key, value in occupations.items():
-        print(f"{key}: {value}")
-    print("========================================")
-    print("HINT: You can enter just number or full name of occupations.")
+
+    def print_occupation():
+        print("========================================")
+        for key, value in occupations.items():
+            print(f"{key}: {value}")
+        print("========================================")
+        print("HINT: You can enter just number or full name of occupations.")
+
+    print_occupation()
+
     while True:
         user_occupation = input(">> ")
         if user_occupation in occupations or user_occupation in occupations.values():
@@ -87,8 +99,8 @@ def get_user_input_for_character():
                 break
         else:
             print(f"{user_occupation} is not valid occupation.")
-            print("Please re-enter your occupation by number or full name of occupations.")
-            # TODO: print occupations list one more time here
+            print("Please re-enter your occupation again.")
+            print_occupation()
     return character_information
 
 
