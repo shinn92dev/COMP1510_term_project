@@ -262,17 +262,19 @@ def solve_quiz(chosen_quiz):
         print(option.strip())
     print("")
 
-    user_answer = input("Enter your answer >>>").strip()
-    if user_answer not in ['1', '2', '3']:
-        raise ValueError("Invalid choice!\nPlease select one of the following options:")
-    elif user_answer == answer:
-        print("You are right! You get 1 HP 🥳")
-        print("")
-        return True
-    else:
-        print(f"Oops! The answer is {answer}")
-        print("")
-        return False
+    while True:
+        user_answer = input("Enter your answer >>>").strip()
+        if user_answer not in ['1', '2', '3']:
+            print("Please select 1, 2, or 3.")
+            continue
+        elif user_answer == answer:
+            print("You are right! You get 1 HP 🥳")
+            print("")
+            return True
+        else:
+            print(f"Oops! The answer is {answer}")
+            print("")
+            return False
 
 
 def increase_hp(character):
