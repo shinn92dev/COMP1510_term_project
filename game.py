@@ -2,11 +2,18 @@ import random
 import json
 
 
-# def print_character_status(character):
-#     {"name": character_information["name"], "occupation": character_information["occupation_title"],
-#      "location": (0, 0), "level": 1, "current_hp": 10, "max_hp": 10, "xp": 10, "attack": 2}
-#     print_value = ""
-#     print_value += "Name"
+def print_map(current_map, character):
+    max_x_coordinate = max(coord[0] for coord in current_map.keys())
+    max_y_coordinate = max(coord[1] for coord in current_map.keys())
+    current_x_coord, current_y_coord = character["location"]
+    for y_coord in range(max_y_coordinate + 1):
+        for x_coord in range(max_x_coordinate + 1):
+            if x_coord == current_x_coord and y_coord == current_y_coord:
+                print("| 👨 |", end=" ")
+            else:
+                print("| 🟪 |", end=" ")
+        print()
+    print()
 
 
 def print_initial_story(name):
@@ -443,4 +450,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    c_m = {(0, 0): 'Home', (0, 1): 'Kokusai Street(国際通り)', (0, 2): 'Hateruma Island(波照間島)', (0, 3): 'CoCo Curry (CoCo壱番屋)', (1, 0): 'Okinawa Churaumi Aquarium(沖縄美ら海水族館)', (1, 1): 'CoCo Curry (CoCo壱番屋)', (1, 2): 'Mihama American Village(美浜アメリカンビレッジ)', (1, 3): 'King Tacos', (2, 0): 'Naminouegu Shrine(波上宮)', (2, 1): 'Kouri Island(古宇利島)', (2, 2): 'Blue Seal Ice Cream', (2, 3): 'A&W', (3, 0): 'Shuri Castle(首里城)', (3, 1): 'Peace Memorial Park(平和祈念公園)', (3, 2): 'Okinawa World(沖縄ワールド)', (3, 3): 'CoCo Curry (CoCo壱番屋)', (4, 0): 'Nakijin Castle Ruins(今帰仁城跡)', (4, 1): 'Miyako Island(宮古島)', (4, 2): 'Gyokusenn Cave(玉泉洞)', (4, 3): 'Okinawa US Military Base'}
+    c = {"location": (1, 3)}
+    print_map(c_m, c)
