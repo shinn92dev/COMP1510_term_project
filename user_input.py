@@ -6,6 +6,12 @@ from game_printer import print_colored_text
 
 
 def get_user_input_for_character():
+    """
+    Get user input for creating character dictionary
+
+    :postconditon: get user input for character until user enters valid data
+    :return: a dictionary containing the user's name and selected occupation
+    """
     # Get username from user
     print("Welcome User! Enter your name to start")
     character_information = {}
@@ -30,6 +36,11 @@ def get_user_input_for_character():
     print()
 
     def print_occupation():
+        """
+        Print the list of occupation with corresponding numbers and descriptions
+
+        :postcondition: print out correct occupations and descriptions with corresponding number
+        """
         print_colored_text("|OCCUPATION|".center(100, "="), "YELLOW")
         for key, value in occupations.items():
             print(f"{key}: {value[0]}")
