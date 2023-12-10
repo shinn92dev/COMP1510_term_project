@@ -6,6 +6,12 @@ from random import randint
 
 
 def create_quizzes():
+    """
+    Create quizzes' dictionary from JSON file containing quiz information.
+
+    :postcondition: get quizzes information from JSON file and create dictionary from the given information
+    :return: a dictionary containing quizzes information
+    """
     quiz_file = "game_data/quiz.json"
     with open(quiz_file, encoding="utf-8") as quiz_json:
         quizzes = json.load(quiz_json)
