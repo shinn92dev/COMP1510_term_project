@@ -4,6 +4,17 @@ Add Docstring
 from dashtable import data2rst
 from cfonts import render
 import time
+from colorama import init, Fore
+
+
+init(autoreset=True)
+
+
+def print_colored_text(text, color, new_line=True):
+    if new_line:
+        print(getattr(Fore, color) + text)
+    else:
+        print(getattr(Fore, color) + text, end=" ")
 
 
 def print_with_delay(lines, delay, required_strip=False):
@@ -14,19 +25,20 @@ def print_with_delay(lines, delay, required_strip=False):
             print(line, flush=True)
         time.sleep(delay)
 
+
 def print_map(current_map, character):
     max_x_coordinate = max(coord[0] for coord in current_map.keys())
     max_y_coordinate = max(coord[1] for coord in current_map.keys())
     current_x_coord, current_y_coord = character["location"]
-    print("-----------------------------------")
+    print_colored_text("MAP".center(35, "-"), "BLUE")
     for y_coord in range(max_y_coordinate + 1):
         for x_coord in range(max_x_coordinate + 1):
             if x_coord == current_x_coord and y_coord == current_y_coord:
-                print("| 👨 |", end=" ")
+                print_colored_text("| 🧔🏻 |", "BLUE", False)
             else:
-                print("| 🟪 |", end=" ")
+                print_colored_text("| 🟦 |", "BLUE", False)
         print()
-        print("-----------------------------------")
+        print_colored_text("".center(35, "-"), "BLUE")
 
 
 def print_start_message(character):
@@ -101,6 +113,7 @@ def print_status(character, current_map_level, current_map):
 
 def main():
     pass
+
 
 if __name__ == "__main__":
     main()

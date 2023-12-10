@@ -1,2 +1,3 @@
 dashtable~=1.4.5
 beautifulsoup4~=4.12.2
+colorama~=0.4.6
