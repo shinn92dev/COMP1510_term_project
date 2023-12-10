@@ -70,6 +70,15 @@ def solve_quiz(chosen_quiz):
 
 
 def check_for_quiz(character, luck_stat):
+    """
+    Determine if the character encounters a quiz based on luck stat of player's class and character's current HP.
+
+    :param character: a dictionary representing the player's character
+    :param luck_stat: an integer representing the character's luck attribute
+    :precondition: character must have 'current_hp' and 'max_hp' keys with integer values, luck_stat must be an integer
+    :return: True if a randomly selected number within a range falls below the character's luck-adjusted chance,
+             otherwise False
+    """
     base_chance = 15
 
     # If luck_stat is 5, increase chance to 25
@@ -77,6 +86,7 @@ def check_for_quiz(character, luck_stat):
         base_chance = 25
 
     #  Check for a quiz
+    #  If the character's current HP are at their maximum, no quiz for sure
     if not (character["current_hp"] == character["max_hp"]):
         there_is_a_quiz = randint(1, 100)  # Use a range from 1 to 100 for percentage
         if there_is_a_quiz <= base_chance:
