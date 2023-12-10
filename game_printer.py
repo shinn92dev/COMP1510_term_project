@@ -179,6 +179,12 @@ def print_status(character, current_map_level, current_map):
 
 
 def print_ending_message():
+    """
+    Print out game end message
+
+    This function retrieves the game end message from json files and print out each line
+    :postcondition: print out correct game end message
+    """
     with open("game_data/game_end.txt", 'r', encoding='utf-8') as game_end:
         game_end_lines = game_end.readlines()
     print_with_delay(game_end_lines, 0.3, True)
