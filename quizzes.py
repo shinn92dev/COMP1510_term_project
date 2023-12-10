@@ -34,6 +34,15 @@ def select_quiz(quizzes, level):
 
 
 def solve_quiz(chosen_quiz):
+    """
+    Present a quiz question to the player and check the answer.
+
+    :param chosen_quiz: a dictionary containing a quiz question, select options, and the correct answer
+    :precondition: chosen_quiz must have keys 'question', 'options', and 'answer',
+                   where 'question' is a string, 'options' is a list of strings, and 'answer' is a string
+    :postcondition: inform the player whether they have answered correctly
+    :return: True if the player's answer matches the correct answer, otherwise False
+    """
     question = chosen_quiz["question"]
     options = chosen_quiz["option"]
     answer = chosen_quiz["answer"]
