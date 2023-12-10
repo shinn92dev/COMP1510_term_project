@@ -39,10 +39,18 @@ def is_in_the_goal_destination_of_each_map(character, current_map):
 
     :param character: a dictionary containing the character's information
     :param current_map: a dictionary containing which map the character is on
-    :precondition: character is a dictionary containing name, occupation_title as keys with values from the user
+    :precondition: character is a dictionary containing the character's information, including 'name',and
+                  'location' as a tuple representing coordinates
     :precondition: current_map have keys that represent valid location coordinates as tuples (x, y)
     :postcondtion: determines if the character is at the goal location on the current map
     :return: True if the character location matches the goal location, otherwise False
+    >>> character_info = {'name': 'Chris', 'location': (3, 3)}
+    >>> current_board = {(0, 0): 'start', (1, 1): 'empty room', (3, 3): 'goal'}
+    >>> is_in_the_goal_destination_of_each_map(character_info, current_board)
+    True
+    >>> character_info = {'name': 'Chris', 'location': (1, 1)}
+    >>> is_in_the_goal_destination_of_each_map(character_info, current_board)
+    False
     """
     if sorted(current_map.keys())[-1] == character["location"]:
         return True
