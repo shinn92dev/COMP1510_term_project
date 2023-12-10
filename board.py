@@ -3,6 +3,12 @@ from random import shuffle
 
 
 def create_map():
+    """
+    Create a multi-level game map.
+
+    :postcondtion: a dictionary representing each map that keys are tuples and values are location names
+    :return: a dictionary that represents the game map
+    """
     # Load map name json file and store in dictionary
     location_file = "game_data/location_names.json"
     with open(location_file, encoding="utf-8") as location_names_json:
