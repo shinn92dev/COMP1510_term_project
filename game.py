@@ -33,6 +33,7 @@ def main():
     current_map = game_map[character["level"]]
 
     print_start_message(character)
+
     describe_current_location(current_map, character)
     while not am_i_win:
         current_map_level = get_current_map_level(character, game_map, current_map)
@@ -85,7 +86,7 @@ def main():
                 current_map = game_map[level_for_map]
                 character["location"] = (0, 0)
                 print_colored_text("|INFO|".center(100, "-"), "YELLOW")
-                print("Next level!!")
+                print("You are going Next Map!!")
             elif is_in_goal:
                 print_colored_text("|❌Warning❌|".center(100, "-"), "RED")
                 print("You reached destination, but your level is not high enough to move to the next map.")

@@ -69,7 +69,8 @@ def print_initial_story():
 def describe_current_location(game_board, character):
     print()
     print_colored_text("|INFO|", "YELLOW", False)
-    print(f"You are currently in {game_board[character['location']]}")
+    print("You are currently in", end=" ")
+    print_colored_text(f"`{game_board[character['location']]}`", "YELLOW")
     print()
 
 

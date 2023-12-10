@@ -7,7 +7,6 @@ import time
 
 def increase_attack(character, current_map):
     current_location_name = current_map[character["location"]]
-    print(current_location_name)
     if current_location_name[-8:-1] == "CoCo壱番屋":
         character["attack"] += 1
         print_colored_text("|🎉 Congrats!|", "YELLOW", False)

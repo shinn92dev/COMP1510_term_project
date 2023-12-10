@@ -32,5 +32,3 @@ def create_map():
             maps[level][each_map] = locations[index]
 
     return maps
-
-print(create_map())
