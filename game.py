@@ -73,7 +73,7 @@ def main():
                         print("But don't worry! Your journey is not finished!")
                         print("Your XP is initialized and you are returned to the initial place of the map.")
                         character["location"] = (0, 0)
-                        character["xp"] = 100
+                        character["xp"] = 300
                         character["current_hp"] = character["max_hp"]
                         continue
 
