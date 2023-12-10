@@ -51,9 +51,8 @@ def increase_level(character):
     # character info will be taken from an argument eventually
     # so this is a temporary variable
     character["level"] += 1
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    print_colored_text("|🎉 Congrats!|", "YELLOW", False)
     print(f"You reached level {character['level']}")
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
 
 def main():

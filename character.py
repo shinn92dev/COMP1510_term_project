@@ -20,7 +20,7 @@ def create_character(character_information):
     {'name': 'Anthony', 'occupation': 'Ninja', 'location': (0, 0), 'level': 1, 'current_hp': 1000, 'max_hp': 1000, 'xp': 10, 'attack': 5, 'luck': 5}
     """
     character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
-                 "location": (0, 0), "level": 1, "current_hp": 1000, "max_hp": 1000, "xp": 10, "attack": 5, "luck": 0}
+                 "location": (0, 0), "level": 5, "current_hp": 1000, "max_hp": 1000, "xp": 10, "attack": 5, "luck": 0}
     if character["occupation"] == "Ninja":
         character["luck"] = 5
     if character["occupation"] == "Samurai":
