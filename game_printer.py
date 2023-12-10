@@ -11,6 +11,20 @@ init(autoreset=True)
 
 
 def print_colored_text(text, color, new_line=True):
+    """
+    Print colored text using ANSI escape codes
+
+    This function takes a text string, a color (from colorama.Fore), and an optional parameter
+    to determine whether a new line should be added after printing the text.
+
+    :param text: a string will be printed
+    :param color: a string representing color
+    :param new_line: a boolean value
+    :precondition: text can be any string message
+    :precondition: color should be a boolean value representing color (e.g., "RED", "GREEN")
+    :precondition: new_line should be a boolean value representing whether to add a new line after printing
+    :postcondition: print out the given text in the given color, and create new line based on new_line value
+    """
     if new_line:
         print(getattr(Fore, color) + text)
     else:
