@@ -6,7 +6,7 @@ from random import choice, randint
 
 def create_foe():
     """
-    Create foes' dictionary from JSON file containing foes information
+    Create foes' dictionary from JSON file containing foes information.
 
     :postcondition: get foes information from JSON file and create dictionary from the given information
     :return: a dictionary containing foe information
@@ -19,7 +19,7 @@ def create_foe():
 
 def select_foe(foes, level):
     """
-    Select one random foe that has the same level with the character
+    Select one random foe that has the same level with the character.
 
     :param foes: a dictionary
     :param level: an integer representing current character level
@@ -31,6 +31,16 @@ def select_foe(foes, level):
 
 
 def fight_with_foe(character, foe):
+    """
+    Simulate a fight between character and foe.
+
+    :param character: a dictionary representing the player's character
+    :param foe: a dictionary representing the foe
+    precondition: a dictionary representing the player's character, with keys for 'current_hp' and 'attack'
+    precondition: a dictionary representing the foe, with keys for 'name', 'HP', and 'attack'
+    :postcondition: determine which one wins
+    :return: True if the character wins, otherwise False
+    """
     print(f"A wild {foe['name']} appears!")
     print("")
 
@@ -50,6 +60,11 @@ def fight_with_foe(character, foe):
             return True
 
 def check_for_foe():
+    """
+    Check if there is a foe.
+
+    :return: True if a randomly selected number from 1 to 4 is 1, else False.
+    """
     #  25% of chance to encounter a foe
     there_is_a_foe = randint(1, 4)
     if there_is_a_foe == 1:
