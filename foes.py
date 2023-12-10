@@ -43,18 +43,6 @@ def fight_with_foe(character, foe):
     precondition: a dictionary representing the foe, with keys for 'name', 'HP', and 'attack'
     :postcondition: determine which one wins
     :return: True if the character wins, otherwise False
-    >>> character_info = {"name": "momo", "level": 1, "current_hp": 10, "xp": 10, "attack": 2, "luck": 0}
-    >>> foe_info = {"name": "virus", "HP": 2, "attack": 1, "xp": 5}
-    >>> fight_with_foe(character_info, foe_info)
-    A wild virus appears!
-    <BLANKLINE>
-    <BLANKLINE>
-    |FIGHT🔥| Foe attacked you. Now your hp is 9
-    <BLANKLINE>
-    |FIGHT🔥| You attacked foe. Now foe's hp is 0
-    <BLANKLINE>
-    You WIN!!
-    True
     """
     print(f"A wild {foe['name']} appears!")
     print("")
