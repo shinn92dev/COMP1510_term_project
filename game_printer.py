@@ -47,7 +47,6 @@ def print_start_message(character):
     print(f"Hello!! {character['name']} [{character['occupation'][0]}]!!👋🏻")
     print("Your journey to become Japanese Emperor starts here!")
     print("Good Luck with You!🤞")
-    print()
 
 
 def print_initial_story():
@@ -68,7 +67,8 @@ def print_initial_story():
 
 def describe_current_location(game_board, character):
     print()
-    print(f"|INFO| {character['name']} is now currently in {game_board[character['location']]}")
+    print_colored_text("|INFO|", "YELLOW", False)
+    print(f"You are currently in {game_board[character['location']]}")
     print()
 
 
