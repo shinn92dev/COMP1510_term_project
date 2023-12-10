@@ -13,11 +13,13 @@ def get_user_input_for_character():
         user_name = input(">> ").strip()
         if len(user_name) >= 3:
             character_information["name"] = user_name
+            print()
             print(f"Nice to meet you {user_name}!")
+            print()
             break
         else:
-            print("Your name must be longer than or equal to 3 letters.")
-            print("Please re-enter your name.")
+            print_colored_text("|❌WARNING❌|", "RED", False)
+            print("Your name must be longer than or equal to 3 letters. Please re-enter your name.")
 
     occupation_file = "game_data/occupation.json"
     with open(occupation_file, encoding="utf-8") as location_names_json:
@@ -25,14 +27,15 @@ def get_user_input_for_character():
 
     print("Now, let's select your occupation!")
     print("Please select one occupation from below.")
+    print()
 
     def print_occupation():
-        print("========================================")
+        print_colored_text("|OCCUPATION|".center(100, "="), "YELLOW")
         for key, value in occupations.items():
             print(f"{key}: {value[0]}")
             print(value[1])
-        print("========================================")
         print("HINT: You can enter just number or full name of occupations.")
+        print_colored_text("=".center(100, "="), "YELLOW")
 
     print_occupation()
 
@@ -48,8 +51,10 @@ def get_user_input_for_character():
             finally:
                 break
         else:
-            print(f"{user_occupation} is not valid occupation.")
-            print("Please re-enter your occupation again.")
+            print()
+            print_colored_text("|❌WARNING❌|", "RED", False)
+            print(f"`{user_occupation}` is not valid occupation. Please re-enter your occupation again.")
+            print("")
             print_occupation()
     return character_information
 
