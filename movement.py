@@ -1,3 +1,8 @@
+"""
+Module for handling user movement including validation and actual movement
+"""
+
+
 def validate_movement(user_input, character, board):
     """
     Check if the character's movement based on user input is valid within the board boundaries.

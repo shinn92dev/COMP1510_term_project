@@ -1,5 +1,5 @@
 """
-Add Docstring
+Module containing functions related to fighting with foes logic
 """
 import json
 from random import choice, randint

@@ -1,5 +1,5 @@
 """
-Add Docstring
+Module containing functions related to game quiz logic
 """
 import json
 from random import randint
