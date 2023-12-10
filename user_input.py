@@ -55,15 +55,16 @@ def get_user_input_for_character():
 
 def get_general_user_input():
     valid_direction_inputs = ["1", "2", "3", "4", "north", "south", "east", "west"]
-    valid_feature_inputs = ["help", "map", "status"]
-    valid_inputs = valid_direction_inputs + valid_feature_inputs
+    valid_feature_inputs = ["5", "6", "map", "status"]
     print("Where do you want to go?")
     print("Enter the number or full direction name.")
     print("[1: North, 2: East, 3: South, 4: West, 5: Map, 6: Status]")
     while True:
         user_input = input(">> ").lower()
-        if user_input in valid_inputs:
-            return user_input
+        if user_input in valid_direction_inputs:
+            return ["valid_destination_input", user_input]
+        elif user_input in valid_feature_inputs:
+            return ["valid_feature_input", user_input]
         else:
             print()
             print("------------------------------------------------------")

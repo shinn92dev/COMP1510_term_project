@@ -31,7 +31,6 @@ def main():
 
     am_i_win = False
     current_map = game_map[character["level"]]
-    print(current_map)
 
     describe_current_location(current_map, character)
     while not am_i_win:
@@ -40,9 +39,9 @@ def main():
         print(f"current_map_level {current_map_level}")
         print("#" * 100)
         user_input = get_general_user_input()
-        is_valid_input = validate_movement(user_input, character, current_map)
-        if is_valid_input:
-            move_character(user_input, character)
+        is_valid_movement = validate_movement(user_input[1], character, current_map)
+        if user_input[0] == "valid_destination_input" and is_valid_movement:
+            move_character(user_input[1], character)
             describe_current_location(current_map, character)
             there_is_a_challenger = check_for_foe()
             there_is_a_quiz = check_for_quiz(character, character["luck"])
@@ -89,6 +88,9 @@ def main():
                 print("")
                 print("You reached destination, but not enough level")
                 print("Please walk around the map and reach next level to get next map!")
+        elif user_input[0] == "valid_feature_input":
+            if user_input[1] == "5" or user_input[1] == "map":
+                print_map(current_map, character)
         else:
             print("------------------------------------------------------")
             print("❌Warning!!❌")
