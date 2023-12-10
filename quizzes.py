@@ -55,16 +55,17 @@ def solve_quiz(chosen_quiz):
     print("")
 
     while True:
-        user_answer = input("Enter your answer >>>").strip()
+        print("Enter Your Answer🖌")
+        user_answer = input(">> ").strip()
         if user_answer not in ['1', '2', '3']:
-            print("Please select 1, 2, or 3.")
+            print("Please enter 1, 2, or 3.")
             continue
         elif user_answer == answer:
+            print()
             print("You are right! Your HP is increasing 🥳")
-            print("")
             return True
         else:
-            print(f"Oops! The answer is {answer}")
+            print(f"Oops!😲 Wrong Answer! The answer was {answer}.")
             print("")
             return False
 
