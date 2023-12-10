@@ -39,6 +39,15 @@ def validate_movement(user_input, character, board):
 
 
 def move_character(user_input, character):
+    """
+    Move character based on the user input.
+
+    :param user_input: a string
+    :param character: a dictionary
+    :precondition: user_input is a valid string ("1" for north, "3" for south, "4" for west, "2" for east)
+    :precondition: character is a dictionary containing the character's location as a tuple (x, y)
+    :postcondition: character's current location will be updated based on the user input
+    """
     current_location = list(character["location"])
     location_after_movement = current_location
 
