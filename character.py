@@ -24,7 +24,7 @@ def create_character(character_information):
     if character["occupation"] == "Ninja":
         character["luck"] = 5
     if character["occupation"] == "Samurai":
-        character["attack"] = 5
+        character["attack"] = 2
     return character
 
 

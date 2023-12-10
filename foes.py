@@ -44,6 +44,7 @@ def fight_with_foe(character, foe):
     :postcondition: determine which one wins
     :return: True if the character wins, otherwise False
     """
+    print_colored_text("|❌WARNING❌|", "RED", False)
     print(f"A wild {foe['name']} appears!")
     print("")
 
@@ -60,6 +61,7 @@ def fight_with_foe(character, foe):
         print_colored_text("|FIGHT🔥|", "RED", False)
         print(f"You attacked foe. Now foe's hp is {foe['HP'] if foe['HP'] >= 0 else 0}")
         if foe["HP"] <= 0:
+            print_colored_text("|🎉 Congrats!|", "YELLOW", False)
             print("You WIN!!")
             print()
             return True
