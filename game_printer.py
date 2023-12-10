@@ -52,6 +52,16 @@ def print_with_delay(lines, delay, required_strip=False):
 
 
 def print_map(current_map, character):
+    """
+    Print the current game map with the character's location highlighted
+
+    :param current_map: a dictionary representing current map
+    :param character: a dictionary representing character
+    :precondition: current_map should be a dictionary representing correct map information including keys
+                   representing locations
+    :precondition: character should be a dictionary representing correct character information including 'location' key
+    :postcondition: display the current game map with the character's location highlighted.
+    """
     max_x_coordinate = max(coord[0] for coord in current_map.keys())
     max_y_coordinate = max(coord[1] for coord in current_map.keys())
     current_x_coord, current_y_coord = character["location"]
