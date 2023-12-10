@@ -1,6 +1,8 @@
 """
 Module containing functions related to game progression logic
 """
+
+
 def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map):
     """
     Check if character has reached a high enough level to proceed the next level on map.
