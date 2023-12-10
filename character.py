@@ -1,5 +1,5 @@
 """
-Add Docstring
+Module containing a feature related to character
 """
 
 
