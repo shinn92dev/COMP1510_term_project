@@ -11,6 +11,16 @@ def validate_movement(user_input, character, board):
     :precondition: board must have keys that represent valid location coordinates as tuples (x, y)
     :postcondition: determine if the user's input is valid or not
     :return: True if the user's input is valid, otherwise False
+    >>> player_input = "2"
+    >>> character_info =  {"name": "Anthony", "occupation": "Ninja", "location": (0, 0), "level": 1}
+    >>> map_board = {(0, 0): "room1", (0, 1): "room2", (0, 2): "room3",(1, 0): "room4", (1, 1): "room5", (1,2): "room6"}
+    >>> validate_movement(player_input, character_info, map_board)
+    True
+    >>> player_input = "3"
+    >>> character_info =  {"name": "Momo", "occupation": "Samurai", "location": (0, 2), "level": 1}
+    >>> map_board = {(0, 0): "room1", (0, 1): "room2", (0, 2): "room3",(1, 0): "room4", (1, 1): "room5", (1,2): "room6"}
+    >>> validate_movement(player_input, character_info, map_board)
+    False
     """
     current_location = list(character["location"])
     location_after_movement = current_location
