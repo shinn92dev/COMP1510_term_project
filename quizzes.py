@@ -19,6 +19,15 @@ def create_quizzes():
 
 
 def select_quiz(quizzes, level):
+    """
+    Select one random quiz that has the same level with the location level.
+
+    :param quizzes: a dictionary
+    :param level: an integer representing current location level
+    :precondition:  quizzes should be a dictionary containing 'quizzes' level as keys and list of information as values
+    :postcondition: randomly choose a foe that has the same level with the character
+    :return: a dictionary containing a quiz's information
+    """
     quiz_len = len(quizzes[level]) - 1
     if int(level) <= 5 and quiz_len != -1:
         return quizzes[level].pop(randint(0, quiz_len))
