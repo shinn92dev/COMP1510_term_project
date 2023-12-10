@@ -2,7 +2,17 @@
 Add Docstring
 """
 from dashtable import data2rst
+from cfonts import render
+import time
 
+
+def print_with_delay(lines, delay, required_strip=False):
+    for line in lines:
+        if required_strip:
+            print(line.strip(), flush=True)
+        else:
+            print(line, flush=True)
+        time.sleep(delay)
 
 def print_map(current_map, character):
     max_x_coordinate = max(coord[0] for coord in current_map.keys())
@@ -19,16 +29,20 @@ def print_map(current_map, character):
         print("-----------------------------------")
 
 
-def print_initial_story(name):
+def print_initial_story():
     """
     Print out initial story of the game
 
-    :param name: a string
-    :precondition: a name should be a username that the user inputted
-    :postcondition: print out correct initial story with username
+    :postcondition: print out correct initial story
     """
-    print(f"Hello {name}!")
-    print("Your journey to become Japanese Emperor Starts Here.")
+    rendered_title_first_column = render("The Path", gradient=["red", "yellow"], align="center")
+    rendered_title_second_column = render("of", gradient=["red", "yellow"], align="center")
+    rendered_title_third_column = render("Japan", gradient=["red", "yellow"], align="center")
+    titles = [rendered_title_first_column, rendered_title_second_column, rendered_title_third_column]
+    print_with_delay(titles, 1.2)
+    with open("game_data/game_story.txt", 'r', encoding='utf-8') as story:
+        story_lines = story.readlines()
+    print_with_delay(story_lines, 0.8, True)
 
 
 def describe_current_location(game_board, character):
@@ -80,7 +94,6 @@ def print_status(character, current_map_level, current_map):
 
 def main():
     pass
-
 
 if __name__ == "__main__":
     main()

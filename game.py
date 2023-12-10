@@ -17,6 +17,7 @@ def get_current_map_level(character, entire_board, current_map):
 
 
 def main():
+    print_initial_story()
     game_map = create_map()
 
     # Create Character
@@ -26,8 +27,6 @@ def main():
     # Create Foes
     foes = create_foe()
     quizzes = create_quizzes()
-
-    print_initial_story(character["name"])
 
     am_i_win = False
     current_map = game_map[character["level"]]
