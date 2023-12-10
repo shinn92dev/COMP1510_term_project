@@ -32,6 +32,17 @@ def print_colored_text(text, color, new_line=True):
 
 
 def print_with_delay(lines, delay, required_strip=False):
+    """
+    Print a list of lines with a specified delay between each line
+
+    :param lines: a list
+    :param delay: a number
+    :param required_strip: a boolean value
+    :precondition: lines should be a non-empty list containing only string values
+    :precondition: delay should be a positive int or float number
+    :precondition: required_strip should be a boolean value representing whether to strip each string or not
+    :postcondition: print each line from the given lines list with the specified delay
+    """
     for line in lines:
         if required_strip:
             print(line.strip("\n"), flush=True)
