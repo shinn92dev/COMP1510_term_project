@@ -109,11 +109,20 @@ def print_initial_story():
     print_with_delay(story_lines, 0.6, True)
 
 
-def describe_current_location(game_board, character):
+def describe_current_location(current_map, character):
+    """
+    Describe current location name
+
+    :param current_map: a dictionary representing the current map
+    :param character: a dictionary representing the character
+    :precondition: a current_map should be a dictionary representing correct current map
+    :precondition: a character should be a dictionary representing correct character
+    :postcondition: print out correct current location based on the given character
+    """
     print()
     print_colored_text("|INFO|", "YELLOW", False)
     print("You are currently in", end=" ")
-    print_colored_text(f"`{game_board[character['location']]}`", "YELLOW")
+    print_colored_text(f"`{current_map[character['location']]}`", "YELLOW")
     print()
 
 
