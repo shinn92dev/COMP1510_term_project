@@ -6,9 +6,17 @@ import time
 
 
 def increase_attack(character, current_map):
+    """
+    Increases the attack power of the character if they are in a specific location
+    :param character: a dictionary representing character
+    :param current_map: a dictionary representing current map
+    :precondition: character should be a dictionary containing correct character information
+    :precondition: current_map should be a dictionary containing correct current map information
+    :postcondition: increase character attack power when character is in CoCo Curry and print corresponding message
+    """
     current_location_name = current_map[character["location"]]
     if current_location_name[-8:-1] == "CoCo壱番屋":
-        character["attack"] += 1
+        character["attack"] += 2
         print_colored_text("|🎉 Congrats!|", "YELLOW", False)
         print("Luckily, you came to the CoCo Curry.")
         print("You are eating CoCo Curry now.🍛")
