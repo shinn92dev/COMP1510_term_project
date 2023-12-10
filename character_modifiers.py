@@ -28,9 +28,19 @@ def increase_attack(character, current_map):
 
 
 def increase_hp(character):
-    # character info will be taken from an argument eventually
+    """
+    Increases the character's current health points (HP) up to the maximum HP.
+
+    The function adds 5 HP to the character's current HP. If the resulting current HP exceeds
+    the character's maximum HP, it sets the current HP to the maximum HP
+
+    :param character: a dictionary representing character
+    :precondition: character should be a dictionary containing correct character information
+    :postcondition: The character's current HP is increased, and if it exceeds the maximum HP, it is set to the maximum
+    :return: None
+    """
     current_hp = character["current_hp"]
-    hp = 100
+    hp = 5
     if current_hp + hp >= character["max_hp"]:
         character["current_hp"] = character["max_hp"]
     else:
