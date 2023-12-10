@@ -78,6 +78,13 @@ def print_map(current_map, character):
 
 
 def print_start_message(character):
+    """
+    Print out simple start message
+
+    :param character: a dictionary
+    :precondition: character should be a dictionary containing correct character information
+    :postcondition: print out correct start message with the given character information
+    """
     print()
     print_colored_text("|WELCOME|".center(100, "-"), "YELLOW")
     print(f"Hello!! {character['name']} [{character['occupation'][0]}]!!👋🏻")
