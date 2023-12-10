@@ -39,6 +39,7 @@ def print_map(current_map, character):
                 print_colored_text("| 🟦 |", "BLUE", False)
         print()
         print_colored_text("".center(35, "-"), "BLUE")
+        print()
 
 
 def print_start_message(character):
