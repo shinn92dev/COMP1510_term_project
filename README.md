@@ -21,13 +21,14 @@ This is written in markdown. Read about markdown here: markdowncheatsheet
 
 ## Game Story
 
-Welcome to our text-based adventure game! Embark on a thrilling journey as your character navigates through
-various locations in Japan. The goal is to become Japanese Emperor🦾, but I would say, it's not going to be very easy! 
-You will encounter foes, quizzes. Please enjoy our map, and quizzes we made!! 
+Hello Chris!👋 Welcome to our text-based adventure game! Embark on a thrilling journey as your character travels 
+through various locations in Japan. The goal is to become Japanese Emperor🦾, but I would say, it's not going to be 
+very easy! You will encounter foes, quizzes. Please enjoy our map, and quizzes we made!! We hope you like to visit
+CoCo Curry Restaurant.🙏🏻
 
 ## Requirement
 To play the game, please download all the packages specified in requirements.txt.
 
 To fully enjoy the game, ensure you play it with a terminal prompt of sufficient height. 
 This ensures a better display of maps, prompts, and other game-related information. 
-Prepare for an exciting journey in this engaging text-based adventure!
+Prepare for an exciting journey in this engaging text-based adventure!✨
