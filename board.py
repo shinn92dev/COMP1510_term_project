@@ -10,8 +10,7 @@ def create_map():
     :return: a dictionary that represents the game map
     """
     # Load map name json file and store in dictionary
-    location_file = "game_data/location_names.json"
-    with open(location_file, encoding="utf-8") as location_names_json:
+    with open("game_data/location_names.json", encoding="utf-8") as location_names_json:
         location_names = json.load(location_names_json)
 
     # Shuffle map list expect first and last items

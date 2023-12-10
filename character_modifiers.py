@@ -50,7 +50,12 @@ def increase_xp(character, foe):
 def increase_level(character):
     # character info will be taken from an argument eventually
     # so this is a temporary variable
-    character["level"] += 1
+    each_level_status = {2: {"max_hp": 40, "xp": 20}, 3: {"max_hp": 50, "xp": 30},
+                         4: {"max_hp": 60, "xp": 40}, 5: {"max_hp": 70, "xp": 50}}
+    next_level = character["level"] + 1
+    character["level"] = next_level
+    character["current_hp"] = character["max_hp"] = each_level_status[next_level]["max_hp"]
+    character["xp"] = each_level_status[next_level]["xp"]
     print_colored_text("|🎉 Congrats!|", "YELLOW", False)
     print(f"You reached level {character['level']}")
 
