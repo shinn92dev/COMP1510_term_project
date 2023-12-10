@@ -96,6 +96,7 @@ def print_initial_story():
     """
     Print out initial story of the game
 
+    This function retrieves the game story from json files and print out each line
     :postcondition: print out correct initial story
     """
     rendered_title_first_column = render("The Path", gradient=["red", "yellow"], align="center")
