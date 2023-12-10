@@ -7,7 +7,7 @@ from game_printer import print_colored_text
 
 def get_user_input_for_character():
     """
-    Get user input for creating character dictionary
+    Prompt the user for character information
 
     :postconditon: get user input for character until user enters valid data
     :return: a dictionary containing the user's name and selected occupation
@@ -71,6 +71,13 @@ def get_user_input_for_character():
 
 
 def get_general_user_input():
+    """
+    Prompt the user for general input, including movement directions and other features
+
+    :postcondition: prompt the user for general input until user enters valid input
+    :return: a list containing the type of input ("valid_destination_input" or "valid_feature_input") and
+             the user's input value
+    """
     valid_direction_inputs = ["1", "2", "3", "4", "north", "south", "east", "west"]
     valid_feature_inputs = ["5", "6", "map", "status"]
     print("Where do you want to go or What do you want to do?")
