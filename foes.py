@@ -3,6 +3,9 @@ Add Docstring
 """
 import json
 from random import choice, randint
+from game_printer import print_colored_text
+import time
+
 
 def create_foe():
     """
@@ -56,20 +59,25 @@ def fight_with_foe(character, foe):
     print(f"A wild {foe['name']} appears!")
     print("")
 
+    count = 1
     while True:
         character["current_hp"] -= foe["attack"]
-        print("")
-        print(f"|FIGHT🔥| Foe attacked you. Now your hp is {character['current_hp']}")
-        print("")
+        print(f"Round {count}")
+        print_colored_text("|FIGHT🔥|", "RED", False)
+        print(f"Foe attacked you. Now your hp is {character['current_hp']}")
 
         if character["current_hp"] <= 0:
             return False
         foe["HP"] -= character["attack"]
-        print(f"|FIGHT🔥| You attacked foe. Now foe's hp is {foe['HP']}")
-        print("")
+        print_colored_text("|FIGHT🔥|", "RED", False)
+        print(f"You attacked foe. Now foe's hp is {foe['HP'] if foe['HP'] >= 0 else 0}")
         if foe["HP"] <= 0:
             print("You WIN!!")
+            print()
             return True
+        count += 1
+        time.sleep(0.7)
+
 
 def check_for_foe():
     """
