@@ -1,3 +1,6 @@
+"""
+Module for creating a multi-level game map
+"""
 import json
 from random import shuffle
 
@@ -30,5 +33,4 @@ def create_map():
     for level, locations in zip(maps.keys(), location_names.values()):
         for index, each_map in enumerate(maps[level]):
             maps[level][each_map] = locations[index]
-
     return maps
