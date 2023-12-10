@@ -37,7 +37,6 @@ def increase_hp(character):
     :param character: a dictionary representing character
     :precondition: character should be a dictionary containing correct character information
     :postcondition: The character's current HP is increased, and if it exceeds the maximum HP, it is set to the maximum
-    :return: None
     """
     current_hp = character["current_hp"]
     hp = 5
@@ -53,10 +52,23 @@ def increase_hp(character):
 
 
 def increase_xp(character, foe):
-    # character info will be taken from an argument eventually
-    # so this is a temporary variable
+    """
+    Handles the increase of experience points (XP) for the character after defeating a foe
+
+    If the character's XP is less than or equal to 0 after deducting the foe's XP, it prints a level-up message
+    indicating that the character has reached the maximum XP and levels up. Otherwise, it subtracts the foe's XP
+    from the character's XP.
+
+    :param character: a dictionary representing character
+    :param foe: a dictionary representing foe
+    :precondition: character should be a dictionary containing correct character information
+    :precondition: foe should be a dictionary containing correct foe information
+    :postcondition: adjust the character's XP
+    :return: True if the character's XP <= 0; False otherwise
+    """
     if character["xp"] <= 0:
-        print("Congratulations! You've reached maximum XP so Your level went up!")
+        print_colored_text("|🎉 Congrats!|", "YELLOW", False)
+        print("You've reached maximum XP so Your level went up!")
         print("")
         return True
     else:
@@ -65,8 +77,6 @@ def increase_xp(character, foe):
 
 
 def increase_level(character):
-    # character info will be taken from an argument eventually
-    # so this is a temporary variable
     each_level_status = {2: {"max_hp": 40, "xp": 20}, 3: {"max_hp": 50, "xp": 30},
                          4: {"max_hp": 60, "xp": 40}, 5: {"max_hp": 70, "xp": 50}}
     next_level = character["level"] + 1
