@@ -23,7 +23,7 @@ def main():
     """
     Run the game
     """
-    # print_initial_story()
+    print_initial_story()
     game_map = create_map()
 
     # Create Character
