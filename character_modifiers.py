@@ -1,5 +1,5 @@
 """
-Add Docstring
+Module containing features of modifying character status
 """
 from game_printer import print_colored_text
 import time
