@@ -71,6 +71,14 @@ def is_achieved_goal(character, current_map):
                     the goal location in the map
     :return: True if character's level is greater than 5 and character's current location matches the goal location,
              otherwise False
+    >>> character_info = {'name': 'Chris', 'level': 6, 'location': (3, 3)}
+    >>> current_board = {(0, 0): 'start', (1, 1): 'path', (3, 3): 'goal'}
+    >>> is_achieved_goal(character_info, current_board)
+    True
+    >>> character_info = {'name': 'Chris', 'level': 4, 'location': (3, 3)}
+    >>> current_board = {(0, 0): 'start', (1, 1): 'path', (3, 3): 'goal'}
+    >>> is_achieved_goal(character_info, current_board)
+    False
     """
     if character["level"] > 5 and is_in_the_goal_destination_of_each_map(character, current_map):
         return True
