@@ -9,15 +9,13 @@ from game_printer import (print_map, print_initial_story, describe_current_locat
 from status_validation import (is_enough_level_to_proceed_to_next_map, is_achieved_goal,
                                is_in_the_goal_destination_of_each_map)
 from movement import move_character, validate_movement
-
-
-def get_current_map_level(character, entire_board, current_map):
-    for map_level in range(1, 6):
-        if current_map[character["location"]] in entire_board[map_level].values():
-            return map_level
+from utils import get_current_map_level
 
 
 def main():
+    """
+    Run the game
+    """
     # print_initial_story()
     game_map = create_map()
 
