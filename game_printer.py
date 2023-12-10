@@ -20,7 +20,7 @@ def print_colored_text(text, color, new_line=True):
 def print_with_delay(lines, delay, required_strip=False):
     for line in lines:
         if required_strip:
-            print(line.strip(), flush=True)
+            print(line.strip("\n"), flush=True)
         else:
             print(line, flush=True)
         time.sleep(delay)
@@ -60,7 +60,7 @@ def print_initial_story():
     rendered_title_second_column = render("of", gradient=["red", "yellow"], align="center")
     rendered_title_third_column = render("Japan", gradient=["red", "yellow"], align="center")
     titles = [rendered_title_first_column, rendered_title_second_column, rendered_title_third_column]
-    print_with_delay(titles, 1.2)
+    print_with_delay(titles, 1)
     with open("game_data/game_story.txt", 'r', encoding='utf-8') as story:
         story_lines = story.readlines()
     print_with_delay(story_lines, 0.6, True)
@@ -112,6 +112,17 @@ def print_status(character, current_map_level, current_map):
              span_third_column_left, span_third_column_right, span_fourth_column_left, span_fourth_column_right,
              span_fifth_column_left, span_fifth_column_right]
     print(data2rst(table, spans=spans, use_headers=True))
+
+
+def print_ending_message():
+    with open("game_data/game_end.txt", 'r', encoding='utf-8') as game_end:
+        game_end_lines = game_end.readlines()
+    print_with_delay(game_end_lines, 0.3, True)
+    rendered_message_congratulation = render("Congratulation!", gradient=["red", "yellow"], align="center")
+    rendered_message_game = render("Game", gradient=["red", "yellow"], align="center")
+    rendered_message_over = render("Over", gradient=["red", "yellow"], align="center")
+    ending_messages = [rendered_message_congratulation, rendered_message_game, rendered_message_over]
+    print_with_delay(ending_messages, 0.8)
 
 
 def main():

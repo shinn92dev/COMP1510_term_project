@@ -28,9 +28,13 @@ def select_quiz(quizzes, level):
     :postcondition: randomly choose a foe that has the same level with the character
     :return: a dictionary containing a quiz's information
     """
-    quiz_len = len(quizzes[level]) - 1
-    if int(level) <= 5 and quiz_len != -1:
-        return quizzes[level].pop(randint(0, quiz_len))
+    try:
+        quiz_len = len(quizzes[level]) - 1
+    except KeyError:
+        return
+    else:
+        if int(level) <= 5 and quiz_len != -1:
+            return quizzes[level].pop(randint(0, quiz_len))
 
 
 def solve_quiz(chosen_quiz):

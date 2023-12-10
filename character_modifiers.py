@@ -44,12 +44,6 @@ def increase_xp(character, foe):
         return True
     else:
         character["xp"] -= foe['xp']
-        # print("========================================")
-        # print("Current Status: ")
-        # for key, value in character.items():
-        #     print(f"{key}: {value}")
-        # print("========================================")
-        # print("")
         return False
 
 

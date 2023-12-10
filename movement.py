@@ -70,6 +70,7 @@ def move_character(user_input, character):
 
     character["location"] = tuple(location_after_movement)
 
+
 def main():
     pass
 

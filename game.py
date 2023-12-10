@@ -41,9 +41,11 @@ def main():
         if user_input[0] == "valid_destination_input" and is_valid_movement:
             move_character(user_input[1], character)
             describe_current_location(current_map, character)
+            am_i_win = is_achieved_goal(character, current_map)
+            if am_i_win:
+                break
             there_is_a_challenger = check_for_foe()
             there_is_a_quiz = check_for_quiz(character, character["luck"])
-            am_i_win = is_achieved_goal(character, current_map)
             increase_attack(character, current_map)
 
             if current_map_level + 1 > character["level"]:
@@ -79,7 +81,8 @@ def main():
             is_enough_level = is_enough_level_to_proceed_to_next_map(character, game_map, current_map)
             is_in_goal = is_in_the_goal_destination_of_each_map(character, current_map)
             if is_enough_level and is_in_goal:
-                current_map = game_map[character["level"]]
+                level_for_map = character["level"] if int(character["level"]) <= 5 else 5
+                current_map = game_map[level_for_map]
                 character["location"] = (0, 0)
                 print_colored_text("|INFO|".center(100, "-"), "YELLOW")
                 print("Next level!!")
@@ -100,6 +103,7 @@ def main():
             print("You reached the boundary of the game board!")
             print("You cannot move to the direction!")
             print()
+
 
 
 if __name__ == "__main__":
