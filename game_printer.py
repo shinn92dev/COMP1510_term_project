@@ -43,10 +43,12 @@ def print_map(current_map, character):
 
 def print_start_message(character):
     print()
-    print(f"Hello!! {character['name']} [{character['occupation'][0]}]!!")
+    print_colored_text("|WELCOME|".center(100, "-"), "YELLOW")
+    print(f"Hello!! {character['name']} [{character['occupation'][0]}]!!👋🏻")
     print("Your journey to become Japanese Emperor starts here!")
-    print("Good Luck with You!")
+    print("Good Luck with You!🤞")
     print()
+
 
 def print_initial_story():
     """
