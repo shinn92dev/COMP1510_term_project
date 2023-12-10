@@ -6,17 +6,28 @@ This is written in markdown. Read about markdown here: markdowncheatsheet
 
 ## Your name:
 
-Anthony (Seunghwan) Shin
-Momona Wada
+- Anthony (Seunghwan) Shin
+- Momona Wada
 
 ## Your student number:
 
-Anthony: A01299201 
-Momo: A01348325
+- Anthony: A01299201 
+- Momo: A01348325
 
 ## Your GitHub ID:
 
-Anthony: shinn92dev 
-Momo: Momona-Wada
+- Anthony: shinn92dev 
+- Momo: Momona-Wada
 
-## Any important comments you'd like to make about your work:
+## Game Story
+
+Welcome to our text-based adventure game! Embark on a thrilling journey as your character navigates through
+various locations in Japan. The goal is to become Japanese Emperor🦾, but I would say, it's not going to be very easy! 
+You will encounter foes, quizzes. Please enjoy our map, and quizzes we made!! 
+
+## Requirement
+To play the game, please download all the packages specified in requirements.txt.
+
+To fully enjoy the game, ensure you play it with a terminal prompt of sufficient height. 
+This ensures a better display of maps, prompts, and other game-related information. 
+Prepare for an exciting journey in this engaging text-based adventure!
