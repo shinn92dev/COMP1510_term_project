@@ -29,11 +29,10 @@ def increase_hp(character):
     else:
         character["current_hp"] += hp
 
-    print("========================================")
-    print(f"Current Status: HP {character['current_hp']} / {character['max_hp']}")
-    print("========================================")
-    print("")
-
+    print()
+    print_colored_text("|🎉 Congrats!|", "YELLOW", False)
+    print(f"Your Current HP {character['current_hp']} / {character['max_hp']}")
+    print()
 
 def increase_xp(character, foe):
     # character info will be taken from an argument eventually
