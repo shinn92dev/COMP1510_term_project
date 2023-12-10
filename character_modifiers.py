@@ -1,12 +1,23 @@
 """
 Add Docstring
 """
+from game_printer import print_colored_text
+import time
+
+
 def increase_attack(character, current_map):
     current_location_name = current_map[character["location"]]
     print(current_location_name)
     if current_location_name[-8:-1] == "CoCo壱番屋":
         character["attack"] += 1
-        print("|🎉 Congrats!| You got stronger")
+        print_colored_text("|🎉 Congrats!|", "YELLOW", False)
+        print("Luckily, you came to the CoCo Curry.")
+        print("You are eating CoCo Curry now.🍛")
+        for _ in range(3):
+            print("...")
+            time.sleep(0.7)
+        print("Now, you got stronger! Your attack power increased because you are full!")
+        print()
 
 
 def increase_hp(character):

@@ -92,6 +92,7 @@ def check_for_foe():
     else:
         return False
 
+
 def main():
     pass
 
