@@ -59,6 +59,19 @@ def is_in_the_goal_destination_of_each_map(character, current_map):
 
 
 def is_achieved_goal(character, current_map):
+    """
+    Check if the character has reached the goal in the current map.
+
+    :param character: a dictionary containing the character's information
+    :param current_map: a dictionary containing which map the character is in
+    :precondition: character is a dictionary containing the character's information, including 'level',and
+                  'location' as a tuple representing coordinates
+    :precondition: current_map have keys that represent valid location coordinates as tuples (x, y)
+    :postcondition: determines if the character's level is above 5 and their current location matches
+                    the goal location in the map
+    :return: True if character's level is greater than 5 and character's current location matches the goal location,
+             otherwise False
+    """
     if character["level"] > 5 and is_in_the_goal_destination_of_each_map(character, current_map):
         return True
     else:
