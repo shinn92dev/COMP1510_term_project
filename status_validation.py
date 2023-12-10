@@ -10,6 +10,18 @@ def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map)
     :precondition: current_map is a dictionary representing the current map with character's location.
     :postcondition: determine if the character's current level is greater than the current map's level
     :return: True if the character's current level is greater than the current map's level, otherwise False
+    >>> character_info = {"level": 3, "location": (1, 1)}
+    >>> entire_map = {1: {(0, 0): "room1", (1, 1): "room2"},
+    ...     2: {(0, 0): "room3", (1, 1): "room4"},
+    ...     3: {(0, 0): "room5", (1, 1): "room6"},
+    ...     4: {(0, 0): "room7", (1, 1): "room8"},
+    ...     5: {(0, 0): "room9", (1, 1): "room10"},}
+    >>> current_position_in_map = {(0, 0): "room3", (1, 1): "room4"}
+    >>> is_enough_level_to_proceed_to_next_map(character_info, entire_map, current_position_in_map)
+    True
+    >>> character_info = {"level": 2, "location": (0, 0)}
+    >>> is_enough_level_to_proceed_to_next_map(character_info, entire_map, current_position_in_map)
+    False
     """
     current_map_level = None
     for map_level in range(1, 6):
