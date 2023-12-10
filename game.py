@@ -1,3 +1,10 @@
+"""
+Anthony Shin (A01299201)
+Momona Wada (A01348325)
+
+This is our game! I hope you enjoy this. Thank you for the entire term. We could have learned a lot.
+We can't wait for learning OOP with you!😉
+"""
 from character import create_character
 from foes import create_foe, select_foe, fight_with_foe, check_for_foe
 from board import create_map
