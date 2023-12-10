@@ -127,6 +127,17 @@ def describe_current_location(current_map, character):
 
 
 def print_status(character, current_map_level, current_map):
+    """
+    Print out all the current character status in beautified table
+
+    :param character: a dictionary representing character
+    :param current_map_level: an int
+    :param current_map: a dictionary representing current map
+    :precondition: character should be a dictionary representing correct character information
+    :precondition: current_map_level should be a positive int between 1 and 5 representing correct current map level
+    :precondition: current_map should be a dictionary representing correct current map information
+    :postcondition: create beautified table with given information and print it out
+    """
     map_names_for_each_level = {1: "沖縄 (Okinawa)", 2: "福岡 (Fukuoka)", 3: "京都 (Kyoto)",
                                 4: "富士山 (Fuji Mountain)", 5: "東京 (Tokyo)"}
     name = f"Name: {character['name']}"
