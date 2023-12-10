@@ -34,6 +34,16 @@ def is_enough_level_to_proceed_to_next_map(character, entire_board, current_map)
 
 
 def is_in_the_goal_destination_of_each_map(character, current_map):
+    """
+    Check if the character has reached the goal of each map.
+
+    :param character: a dictionary containing the character's information
+    :param current_map: a dictionary containing which map the character is on
+    :precondition: character is a dictionary containing name, occupation_title as keys with values from the user
+    :precondition: current_map have keys that represent valid location coordinates as tuples (x, y)
+    :postcondtion: determines if the character is at the goal location on the current map
+    :return: True if the character location matches the goal location, otherwise False
+    """
     if sorted(current_map.keys())[-1] == character["location"]:
         return True
     else:
