@@ -14,10 +14,10 @@ def create_character(character_information):
     :return: a dictionary containing character information
     >>> character_info = {"name": "Momo", "occupation_title": "Samurai"}
     >>> create_character(character_info)
-    {'name': 'Momo', 'occupation': 'Samurai', 'location': (0, 0), 'level': 1, 'current_hp': 1000, 'max_hp': 1000, 'xp': 10, 'attack': 5, 'luck': 0}
+    {'name': 'Momo', 'occupation': 'Samurai', 'location': (0, 0), 'level': 1, 'current_hp': 30, 'max_hp': 30, 'xp': 10, 'attack': 2, 'luck': 0}
     >>> character_info = {"name": "Anthony", "occupation_title": "Ninja"}
     >>> create_character(character_info)
-    {'name': 'Anthony', 'occupation': 'Ninja', 'location': (0, 0), 'level': 1, 'current_hp': 1000, 'max_hp': 1000, 'xp': 10, 'attack': 5, 'luck': 5}
+    {'name': 'Anthony', 'occupation': 'Ninja', 'location': (0, 0), 'level': 1, 'current_hp': 30, 'max_hp': 30, 'xp': 10, 'attack': 1, 'luck': 5}
     """
     character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
                  "location": (0, 0), "level": 1, "current_hp": 30, "max_hp": 30, "xp": 10, "attack": 1, "luck": 0}
