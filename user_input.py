@@ -2,6 +2,7 @@
 Add Docstring
 """
 import json
+from game_printer import print_colored_text
 
 
 def get_user_input_for_character():
@@ -56,8 +57,8 @@ def get_user_input_for_character():
 def get_general_user_input():
     valid_direction_inputs = ["1", "2", "3", "4", "north", "south", "east", "west"]
     valid_feature_inputs = ["5", "6", "map", "status"]
-    print("Where do you want to go?")
-    print("Enter the number or full direction name.")
+    print("Where do you want to go or What do you want to do?")
+    print("Enter the number or full name.")
     print("[1: North, 2: East, 3: South, 4: West, 5: Map, 6: Status]")
     while True:
         user_input = input(">> ").lower()
@@ -67,13 +68,12 @@ def get_general_user_input():
             return ["valid_feature_input", user_input]
         else:
             print()
-            print("------------------------------------------------------")
-            print("❌Warning!!❌")
-            print(f"Your input `{user_input} is not valid.`")
+            print_colored_text("❌Warning!❌".center(100, "-"), "RED")
+            print(f"Your input `{user_input}` is not valid.`")
             print("Please select from the below.")
-            print(valid_direction_inputs)
-            print(valid_feature_inputs)
-            print("------------------------------------------------------")
+            print("[1: North, 2: East, 3: South, 4: West, 5: Map, 6: Status]")
+            print()
+
 
 def main():
     pass

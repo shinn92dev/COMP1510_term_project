@@ -62,7 +62,7 @@ def solve_quiz(chosen_quiz):
             continue
         elif user_answer == answer:
             print()
-            print("You are right! Your HP is increasing 🥳")
+            print("You are right! Your HP increased! 🥳")
             return True
         else:
             print(f"Oops!😲 Wrong Answer! The answer was {answer}.")
