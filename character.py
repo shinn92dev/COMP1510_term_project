@@ -15,9 +15,9 @@ def create_character(character_information):
     """
     character = {"name": character_information["name"], "occupation": character_information["occupation_title"],
                  "location": (0, 0), "level": 1, "current_hp": 1000, "max_hp": 1000, "xp": 10, "attack": 2, "luck": 0}
-    if character["occupation"] == "Ninja":
+    if character["occupation"][0] == "Ninja":
         character["luck"] = 5
-    if character["occupation"] == "Samurai":
+    if character["occupation"][0] == "Samurai":
         character["attack"] = 5
     return character
 

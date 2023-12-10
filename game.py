@@ -4,7 +4,7 @@ from board import create_map
 from user_input import get_user_input_for_character, get_general_user_input
 from quizzes import select_quiz, create_quizzes, solve_quiz, check_for_quiz
 from character_modifiers import increase_level, increase_attack, increase_xp, increase_hp
-from game_printer import print_map, print_initial_story, describe_current_location
+from game_printer import print_map, print_initial_story, describe_current_location, print_status
 from status_validation import (is_enough_level_to_proceed_to_next_map, is_achieved_goal,
                                is_in_the_goal_destination_of_each_map)
 from movement import move_character, validate_movement
@@ -91,6 +91,10 @@ def main():
         elif user_input[0] == "valid_feature_input":
             if user_input[1] == "5" or user_input[1] == "map":
                 print_map(current_map, character)
+                continue
+            elif user_input[1] == "6" or user_input[1] == "status":
+                print_status(character, current_map_level, current_map)
+                continue
         else:
             print("------------------------------------------------------")
             print("❌Warning!!❌")
