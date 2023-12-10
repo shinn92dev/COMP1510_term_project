@@ -1,5 +1,5 @@
 """
-Add Docstring
+Module for determining the level of the current map based on the character's location
 """
 import json
 from game_printer import print_colored_text
