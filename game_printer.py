@@ -29,6 +29,13 @@ def print_map(current_map, character):
         print("-----------------------------------")
 
 
+def print_start_message(character):
+    print()
+    print(f"Hello!! {character['name']} [{character['occupation'][0]}]!!")
+    print("Your journey to become Japanese Emperor starts here!")
+    print("Good Luck with You!")
+    print()
+
 def print_initial_story():
     """
     Print out initial story of the game
@@ -42,7 +49,7 @@ def print_initial_story():
     print_with_delay(titles, 1.2)
     with open("game_data/game_story.txt", 'r', encoding='utf-8') as story:
         story_lines = story.readlines()
-    print_with_delay(story_lines, 0.8, True)
+    print_with_delay(story_lines, 0.6, True)
 
 
 def describe_current_location(game_board, character):

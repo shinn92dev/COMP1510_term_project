@@ -4,7 +4,7 @@ from board import create_map
 from user_input import get_user_input_for_character, get_general_user_input
 from quizzes import select_quiz, create_quizzes, solve_quiz, check_for_quiz
 from character_modifiers import increase_level, increase_attack, increase_xp, increase_hp
-from game_printer import print_map, print_initial_story, describe_current_location, print_status
+from game_printer import print_map, print_initial_story, describe_current_location, print_status, print_start_message
 from status_validation import (is_enough_level_to_proceed_to_next_map, is_achieved_goal,
                                is_in_the_goal_destination_of_each_map)
 from movement import move_character, validate_movement
@@ -17,7 +17,7 @@ def get_current_map_level(character, entire_board, current_map):
 
 
 def main():
-    print_initial_story()
+    # print_initial_story()
     game_map = create_map()
 
     # Create Character
@@ -31,6 +31,7 @@ def main():
     am_i_win = False
     current_map = game_map[character["level"]]
 
+    print_start_message(character)
     describe_current_location(current_map, character)
     while not am_i_win:
         current_map_level = get_current_map_level(character, game_map, current_map)
