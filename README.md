@@ -8,11 +8,9 @@ Welcome to **Path of Japan**, a thrilling command-line based adventure game that
 
 - Anthony (Seunghwan) Shin
   - GitHub: [shinn92dev](https://github.com/shinn92dev)
-  - Student Number: A01299201
 
 - Momona Wada
   - GitHub: [Momona-Wada](https://github.com/Momona-Wada)
-  - Student Number: A01348325
 
 ## Game Story
 
